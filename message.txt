@@ -1,0 +1,19 @@
+📊 levGTAA (offensiv, 3x-Aequivola cap3) — Tagesstatus (kein ntfy-Meldetag)
+Aktuelle Top-2-Zusammensetzung (18.09.2026):
+📈 INVESTIERT:
+   • 67% Emerging Markets (2.4x) — iShares Core MSCI EM IMI 1x (1x-Naeherung, kein EM-Hebel)
+   • 33% WTI Rohoel (1.7x) — WisdomTree WTI Crude Oil 3x (~1.7x-Aequivola-Ziel)
+(ntfy-Meldung jeweils am: 1. Handelstag des Monats)
+
+Signale je Baustein (USD, 1x-Kurse):
+   • WTI Rohoel: Momentum +214.9%, Trend SMA8>SMA150 JA  ✅ gehalten
+   • Emerging Markets: Momentum +40.2%, Trend SMA8>SMA150 JA  ✅ gehalten
+   • Nasdaq 100: Momentum +38.6%, Trend SMA8>SMA150 JA  · qualifiziert
+   • EuroStoxx 50: Momentum +14.1%, Trend SMA8>SMA150 JA  · qualifiziert
+   • Gold: Momentum -4.0%, Trend SMA8>SMA150 nein  · raus (Trend/Mom)
+   • US-Treasury 20y+: Momentum -16.3%, Trend SMA8>SMA150 nein  · raus (Trend/Mom)
+
+Kursstand: 18.09.2026
+
+Signale auf zuverlaessigen USD-1x-Kursen (Yahoo); kein Xetra-Lag (B1).
+3x-ETNs: Pfad-/Emittentenrisiko. Real EM/TLT nur 1x verfuegbar. KEINE ANLAGEBERATUNG.
