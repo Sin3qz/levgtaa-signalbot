@@ -1,7 +1,7 @@
 {
   "strategy": "levGTAA (offensiv, Aequivola-Hebel + BTC 1x)",
   "key": "levgtaa",
-  "updated": "2026-09-22T12:04:43.818520+02:00",
+  "updated": "2026-09-23T13:04:48.665246+02:00",
   "rebalance": "monthly_first",
   "rebalanceLabel": "erster Handelstag des Monats",
   "ntfyMode": "monthly",
@@ -9,7 +9,7 @@
     "monthly_first"
   ],
   "asOf": "2026-09-21",
-  "needsRetry": false,
+  "needsRetry": true,
   "changedToday": false,
   "changeType": null,
   "cooldown": 0,
@@ -93,31 +93,31 @@
   "freshness": {
     "NASDAQ100": {
       "last": "2026-09-21",
-      "fresh": true
+      "fresh": false
     },
     "EUROSTOXX50": {
       "last": "2026-09-21",
-      "fresh": true
+      "fresh": false
     },
     "EM": {
       "last": "2026-09-21",
-      "fresh": true
+      "fresh": false
     },
     "TLT_LONG": {
       "last": "2026-09-21",
-      "fresh": true
+      "fresh": false
     },
     "GOLD": {
       "last": "2026-09-21",
-      "fresh": true
+      "fresh": false
     },
     "WTI_OIL": {
       "last": "2026-09-21",
-      "fresh": true
+      "fresh": false
     },
     "BTC": {
       "last": "2026-09-21",
-      "fresh": true
+      "fresh": false
     }
   },
   "history": [
