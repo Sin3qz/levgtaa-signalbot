@@ -1,5 +1,5 @@
 📊 levGTAA (offensiv, Aequivola-Hebel + BTC 1x) — Tagesstatus (kein ntfy-Meldetag)
-Aktuelle Top-2-Zusammensetzung (24.09.2026):
+Aktuelle Top-2-Zusammensetzung (25.09.2026):
 📈 Gehalten:
    •  67%  Bitcoin (1x)
    •  33%  WTI Rohoel (1.7x)
@@ -8,16 +8,16 @@ Aktuelle Top-2-Zusammensetzung (24.09.2026):
 Signale je Baustein (USD, 1x-Kurse):
 ```
 Baustein          Momentum   SMA8/150   Status
-WTI Rohoel        +216.0%    +21.0%     HALT 33%
-Bitcoin           +62.4%     +15.0%     HALT 67%
-Nasdaq 100        +54.4%     +7.0%      qualifiziert
-Emerging Markets  +41.8%     +4.8%      qualifiziert
-EuroStoxx 50      +16.7%     +2.6%      qualifiziert
-Gold              -12.4%     -3.9%      raus (Trend/Mom)
-US-Treasury 20y+  -25.2%     -3.5%      raus (Trend/Mom)
+WTI Rohoel        +194.6%    +19.2%     HALT 33%
+Bitcoin           +64.6%     +16.3%     HALT 67%
+Nasdaq 100        +60.4%     +7.6%      qualifiziert
+Emerging Markets  +51.4%     +5.2%      qualifiziert
+EuroStoxx 50      +22.7%     +2.7%      qualifiziert
+Gold              -8.0%      -3.9%      raus (Trend/Mom)
+US-Treasury 20y+  -24.9%     -3.6%      raus (Trend/Mom)
 ```
 
-Kursstand: 24.09.2026
+Kursstand: 25.09.2026
 
 Signale auf zuverlaessigen USD-1x-Kursen (Yahoo); kein Xetra-Lag (B1).
 Gehebelte ETPs: Pfad-/Emittentenrisiko. BTC 1x. KEINE ANLAGEBERATUNG.
