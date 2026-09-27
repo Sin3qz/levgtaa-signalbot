@@ -1,7 +1,7 @@
 {
   "strategy": "levGTAA (offensiv, Aequivola-Hebel + BTC 1x)",
   "key": "levgtaa",
-  "updated": "2026-09-26T11:56:50.838924+02:00",
+  "updated": "2026-09-27T12:36:18.124394+02:00",
   "rebalance": "monthly_first",
   "rebalanceLabel": "erster Handelstag des Monats",
   "ntfyMode": "monthly",
