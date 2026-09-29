@@ -1,14 +1,14 @@
 {
   "strategy": "levGTAA (offensiv, Aequivola-Hebel + BTC 1x)",
   "key": "levgtaa",
-  "updated": "2026-09-28T13:46:51.714881+02:00",
+  "updated": "2026-09-29T13:25:08.356151+02:00",
   "rebalance": "monthly_first",
   "rebalanceLabel": "erster Handelstag des Monats",
   "ntfyMode": "monthly",
   "notifyDays": [
     "monthly_first"
   ],
-  "asOf": "2026-09-25",
+  "asOf": "2026-09-28",
   "needsRetry": false,
   "changedToday": false,
   "changeType": null,
@@ -34,97 +34,93 @@
   ],
   "signals": {
     "NASDAQ100": {
-      "momentum": 0.603619,
+      "momentum": 0.537197,
       "trend": true,
-      "marginSMA": 0.09389,
-      "rankValue": 0.075634,
+      "marginSMA": 0.080728,
+      "rankValue": 0.08016,
       "display": "Nasdaq 100",
       "leverage": 3.0
     },
     "EUROSTOXX50": {
-      "momentum": 0.226652,
+      "momentum": 0.218308,
       "trend": true,
-      "marginSMA": 0.029231,
-      "rankValue": 0.026656,
+      "marginSMA": 0.026404,
+      "rankValue": 0.027092,
       "display": "EuroStoxx 50",
       "leverage": 2.6
     },
     "EM": {
-      "momentum": 0.513923,
+      "momentum": 0.455502,
       "trend": true,
-      "marginSMA": 0.058477,
-      "rankValue": 0.052035,
+      "marginSMA": 0.045695,
+      "rankValue": 0.054273,
       "display": "Emerging Markets",
       "leverage": 2.4
     },
     "TLT_LONG": {
-      "momentum": -0.248559,
+      "momentum": -0.281112,
       "trend": false,
-      "marginSMA": -0.05441,
-      "rankValue": -0.036379,
+      "marginSMA": -0.062101,
+      "rankValue": -0.039077,
       "display": "US-Treasury 20y+",
       "leverage": 4.5
     },
     "GOLD": {
-      "momentum": -0.080258,
+      "momentum": -0.251738,
       "trend": false,
-      "marginSMA": -0.044724,
-      "rankValue": -0.038526,
+      "marginSMA": -0.080823,
+      "rankValue": -0.041119,
       "display": "Gold",
       "leverage": 3.5
     },
     "WTI_OIL": {
-      "momentum": 1.945905,
+      "momentum": 1.899454,
       "trend": true,
-      "marginSMA": 0.171041,
-      "rankValue": 0.191912,
+      "marginSMA": 0.180012,
+      "rankValue": 0.181536,
       "display": "WTI Rohoel",
       "leverage": 1.7
     },
     "BTC": {
-      "momentum": 0.646493,
+      "momentum": 0.640775,
       "trend": true,
-      "marginSMA": 0.186435,
-      "rankValue": 0.163049,
+      "marginSMA": 0.176828,
+      "rankValue": 0.173937,
       "display": "Bitcoin",
       "leverage": 1.0
     }
   },
   "freshness": {
     "NASDAQ100": {
-      "last": "2026-09-25",
+      "last": "2026-09-28",
       "fresh": true
     },
     "EUROSTOXX50": {
-      "last": "2026-09-25",
+      "last": "2026-09-28",
       "fresh": true
     },
     "EM": {
-      "last": "2026-09-25",
+      "last": "2026-09-28",
       "fresh": true
     },
     "TLT_LONG": {
-      "last": "2026-09-25",
+      "last": "2026-09-28",
       "fresh": true
     },
     "GOLD": {
-      "last": "2026-09-25",
+      "last": "2026-09-28",
       "fresh": true
     },
     "WTI_OIL": {
-      "last": "2026-09-25",
+      "last": "2026-09-28",
       "fresh": true
     },
     "BTC": {
-      "last": "2026-09-25",
+      "last": "2026-09-28",
       "fresh": true
     }
   },
   "history": [
-    {
-      "date": "2025-02-24",
-      "allocation": "BTC:0.3333|GOLD:0.6667"
-    },
     {
       "date": "2025-02-25",
       "allocation": "BTC:0.3333|GOLD:0.6667"
@@ -1719,6 +1715,10 @@
     },
     {
       "date": "2026-09-25",
+      "allocation": "EM:0.6667|WTI_OIL:0.3333"
+    },
+    {
+      "date": "2026-09-28",
       "allocation": "EM:0.6667|WTI_OIL:0.3333"
     }
   ]
