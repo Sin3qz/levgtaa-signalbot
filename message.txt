@@ -4,16 +4,16 @@ Ziel seit 01.09.2026 (Signal 31.08.):
 • 50.0%  Cash
 Vola-Cap 55% (gehebelt, 42/63/84 T):
   Signal-Portfolio 31/38/35% → Faktor 1.00
-  Ist-Portfolio heute 27/30/35% (Ø 31%)
+  Ist-Portfolio heute 25/29/35% (Ø 30%)
 Nächstes Signal: Schluss 30.09. → Handel 01.10.2026
 
-Signale (1x-Kurse, Stand 28.09.):
+Signale (1x-Kurse, Stand 29.09.):
 ```
 Asset    MoM Trend  Ziel
+Bitcoin +16%   +9%     –
 Nasdaq  +16%   +7% 50.0%
-Bitcoin +15%   +8%     –
-Gold     -2%   -1%     –
-TLT      -7%   -3%     –
+Gold     -2%   -2%     –
+TLT      -8%   -3%     –
 ```
 MoM = Ø der Ranglisten 1/3/6/9 & 3/6/12 M
 Trend = Ø SMA30/SMA125–225
