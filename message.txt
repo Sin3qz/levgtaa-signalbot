@@ -1,21 +1,26 @@
 📊 levGTAA (Momentum, monatlich) — Tagesstatus
-Ziel seit 01.09.2026 (Signal 31.08.):
+Ziel seit 01.10.2026 (Signal 30.09.):
 • 50.0%  3x Nasdaq 100
-• 50.0%  Cash
+• 50.0%  1x Bitcoin
 Vola-Cap 55% (gehebelt, 42/63/84 T):
-  Signal-Portfolio 31/38/35% → Faktor 1.00
-  Ist-Portfolio heute 25/29/35% (Ø 30%)
-Nächstes Signal: Schluss 30.09. → Handel 01.10.2026
+  Signal-Portfolio 37/40/47% → Faktor 1.00
+  Ist-Portfolio heute 37/40/47% (Ø 42%)
+Nächstes Signal: Schluss 30.10. → Handel 02.11.2026
 
-Signale (1x-Kurse, Stand 29.09.):
+Signale (1x-Kurse, Stand 30.09.):
 ```
 Asset    MoM Trend  Ziel
-Bitcoin +16%   +9%     –
-Nasdaq  +16%   +7% 50.0%
+Nasdaq  +15%   +7% 50.0%
+Bitcoin +14%   +9% 50.0%
 Gold     -2%   -2%     –
 TLT      -8%   -3%     –
 ```
 MoM = Ø der Ranglisten 1/3/6/9 & 3/6/12 M
 Trend = Ø SMA30/SMA125–225
+
+⚠️ Kursdaten evtl. veraltet — Retry läuft; ntfy erst mit frischen Daten.
+
+⚠️ Datenprüfung:
+• Bitcoin (BTC-USD): letzter Kurs 29.09.2026 (erwartet 30.09.2026)
 
 Hebel-ETPs: Pfad-/Emittentenrisiko. KEINE ANLAGEBERATUNG.
