@@ -2,21 +2,19 @@
   "strategy": "levGTAA (Momentum, monatlich)",
   "name": "levGTAA",
   "key": "levgtaa",
-  "updated": "2026-10-01T09:03:50.592246+02:00",
+  "updated": "2026-10-01T09:36:49.842037+02:00",
   "rebalance": "monthly",
   "rebalanceLabel": "Signal Monatsletzter → Handel 1. Handelstag",
   "asOf": "2026-09-30",
-  "needsRetry": true,
-  "dataWarnings": [
-    "Bitcoin (BTC-USD): letzter Kurs 29.09.2026 (erwartet 30.09.2026)"
-  ],
+  "needsRetry": false,
+  "dataWarnings": [],
   "decisionDate": "2026-09-30",
   "tradeDate": "2026-10-01",
   "nextDecision": "2026-10-30",
   "nextRebalance": "2026-11-02",
-  "changedToday": false,
-  "changeType": null,
-  "monthlyNotifyToday": false,
+  "changedToday": true,
+  "changeType": "SWITCH",
+  "monthlyNotifyToday": true,
   "late": false,
   "pendingDecision": null,
   "pendingTrade": null,
@@ -83,10 +81,10 @@
     "BTC": {
       "display": "Bitcoin",
       "leverage": 1,
-      "momentum": 0.138779,
-      "momA": 0.160851,
-      "momB": 0.116706,
-      "trend": 0.094677,
+      "momentum": 0.137845,
+      "momA": 0.159899,
+      "momB": 0.115791,
+      "trend": 0.094652,
       "target": 0.5
     },
     "TLT_LONG": {
@@ -127,8 +125,8 @@
       ],
       [
         "1x Bitcoin",
-        0.138779,
-        0.094677,
+        0.137845,
+        0.094652,
         0.3832,
         0.5
       ],
@@ -762,27 +760,27 @@
     ]
   },
   "freshness": {
-    "QQQ": {
-      "last": "2026-09-30",
-      "fresh": true
-    },
     "^NDX": {
       "last": "2026-09-30",
       "fresh": true
     },
+    "QQQ": {
+      "last": "2026-09-30",
+      "fresh": true
+    },
     "BTC-USD": {
-      "last": "2026-09-29",
-      "fresh": false
+      "last": "2026-09-30",
+      "fresh": true
     },
     "TLT": {
       "last": "2026-09-30",
       "fresh": true
     },
-    "GC=F": {
+    "GLD": {
       "last": "2026-09-30",
       "fresh": true
     },
-    "GLD": {
+    "GC=F": {
       "last": "2026-09-30",
       "fresh": true
     }
