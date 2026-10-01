@@ -2,7 +2,7 @@
   "strategy": "levGTAA (Momentum, monatlich)",
   "name": "levGTAA",
   "key": "levgtaa",
-  "updated": "2026-10-01T09:36:49.842037+02:00",
+  "updated": "2026-10-01T13:36:20.541666+02:00",
   "rebalance": "monthly",
   "rebalanceLabel": "Signal Monatsletzter → Handel 1. Handelstag",
   "asOf": "2026-09-30",
@@ -760,11 +760,11 @@
     ]
   },
   "freshness": {
-    "^NDX": {
+    "QQQ": {
       "last": "2026-09-30",
       "fresh": true
     },
-    "QQQ": {
+    "^NDX": {
       "last": "2026-09-30",
       "fresh": true
     },
