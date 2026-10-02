@@ -1,6 +1,6 @@
-🔔 levGTAA — MONATSWECHSEL
+🔔 levGTAA — MONATSWECHSEL (verspätet; regulär 01.10.2026)
 🔄 UMSCHICHTUNG
-Handeln am 01.10.2026 (Signal: Schluss 30.09.2026)
+Heute handeln (02.10.2026), Signal: Schluss 30.09.2026
 
 Neue Zielgewichte:
 • 50.0%  3x Nasdaq 100
@@ -10,15 +10,15 @@ Neue Zielgewichte:
   Cash: 50.0% -> -0.0%
 Vola-Cap 55% (gehebelt, 42/63/84 T):
   Signal-Portfolio 37/40/47% → Faktor 1.00
-  Ist-Portfolio heute 37/40/47% (Ø 42%)
+  Ist-Portfolio heute 37/40/47% (Ø 41%)
 Nächstes Signal: Schluss 30.10. → Handel 02.11.2026
 
-Signale (1x-Kurse, Stand 30.09.):
+Signale (1x-Kurse, Stand 01.10.):
 ```
 Asset    MoM Trend  Ziel
-Nasdaq  +15%   +7% 50.0%
-Bitcoin +14%   +9% 50.0%
-Gold     -2%   -2%     –
+Nasdaq  +16%   +7% 50.0%
+Bitcoin +15%  +10% 50.0%
+Gold     -3%   -2%     –
 TLT      -8%   -3%     –
 ```
 MoM = Ø der Ranglisten 1/3/6/9 & 3/6/12 M
