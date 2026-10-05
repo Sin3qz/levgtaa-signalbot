@@ -1,7 +1,13 @@
-📊 levGTAA (Momentum, monatlich) — Tagesstatus
-Ziel seit 01.10.2026 (Signal 30.09.):
+🔔 levGTAA — MONATSWECHSEL (verspätet; regulär 01.10.2026)
+🔄 UMSCHICHTUNG
+Heute handeln (05.10.2026), Signal: Schluss 30.09.2026
+
+Neue Zielgewichte:
 • 50.0%  3x Nasdaq 100
 • 50.0%  1x Bitcoin
+Änderung ggü. Vormonat:
+  Bitcoin: 0.0% -> 50.0%
+  Cash: 50.0% -> -0.0%
 Vola-Cap 55% (gehebelt, 42/63/84 T):
   Signal-Portfolio 37/40/47% → Faktor 1.00
   Ist-Portfolio heute 35/40/46% (Ø 40%)
