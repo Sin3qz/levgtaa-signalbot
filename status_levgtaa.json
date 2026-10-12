@@ -2,7 +2,7 @@
   "strategy": "levGTAA (Momentum, monatlich)",
   "name": "levGTAA",
   "key": "levgtaa",
-  "updated": "2026-10-11T13:23:25.260194+02:00",
+  "updated": "2026-10-12T15:08:02.710083+02:00",
   "rebalance": "monthly",
   "rebalanceLabel": "Signal Monatsletzter → Handel 1. Handelstag",
   "asOf": "2026-10-09",
@@ -365,7 +365,7 @@
       {
         "date": "2020-03-31",
         "lead": "TLT_LONG",
-        "allocation": "GOLD:0.3572|TLT_LONG:0.2382"
+        "allocation": "GOLD:0.3573|TLT_LONG:0.2382"
       },
       {
         "date": "2020-04-30",
@@ -760,16 +760,16 @@
     ]
   },
   "freshness": {
-    "^NDX": {
-      "last": "2026-10-09",
-      "fresh": true
-    },
     "QQQ": {
       "last": "2026-10-09",
       "fresh": true
     },
+    "^NDX": {
+      "last": "2026-10-09",
+      "fresh": true
+    },
     "BTC-USD": {
-      "last": "2026-10-10",
+      "last": "2026-10-11",
       "fresh": true
     },
     "TLT": {
