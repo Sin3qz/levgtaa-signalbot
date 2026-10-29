@@ -35,7 +35,7 @@ ASSETS = {
     "NASDAQ100": dict(signal="^NDX", ret="QQQ", leverage=3, display="Nasdaq 100", short="Nasdaq",
                       product="WisdomTree NASDAQ 100 3x Daily Leveraged", isin="IE00BLRPRL42"),
     "BTC":       dict(signal="BTC-USD", ret="BTC-USD", leverage=1, display="Bitcoin", short="Bitcoin",
-                      product="1x-Bitcoin-ETP", isin="", crypto=True),
+                      product="iShares Bitcoin ETP", isin="XS2940466316", crypto=True),
     "UST_IEF":   dict(signal="TLT", ret="IEF", leverage=3, display="US-Treasury 7-10y", short="UST",
                       product="WisdomTree US Treasuries 10Y 3x Daily Leveraged", isin="IE00BKT09032"),
     "GOLD":      dict(signal="GC=F", ret="GLD", leverage=3, display="Gold", short="Gold",
