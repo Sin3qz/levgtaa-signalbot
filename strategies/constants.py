@@ -10,6 +10,10 @@
 #
 #  Zeitplan: Signal = Schlusskurse des LETZTEN Handelstags des Monats,
 #            Handel  = 1. Handelstag des Folgemonats (NYSE-Kalender).
+#            Bitcoin (ab 31.10.2026): juengster abgeschlossener Tagesschluss (UTC) vor dem Handelstag, z. B. Sonntag bei
+#            Handel am Montag; nur der Wert der Entscheidungszeile wird ersetzt, die Historie bleibt auf NYSE-Tagen.
+#            Backtest dazu (studien/STUDIE.md im Dashboard-Repo, 10/2014-10/2026): 5 von 70 Entscheidungen anders,
+#            CAGR -0,2 % p. a. (nicht signifikant); gewaehlt, damit die juengste Information zaehlt.
 #
 #  Regel (je Rangliste a/b und je L = 125..225 in 1er-Schritten):
 #     zulaessig, wenn MoM > 0 UND SMA30 > SMA_L
