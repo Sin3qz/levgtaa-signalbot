@@ -13,6 +13,12 @@ ntfy-Zeitpunkt: am 1. NYSE-Handelstag des Monats (morgens), Entscheidung auf den
 kursen des letzten Handelstags des Vormonats. Genau EINE Meldung je Monat (Zustand in
 notify_state_levgtaa.json). Nur mit frischen Daten; fehlen Daten, holt der naechste Lauf
 die Meldung nach (max. NTFY_LATE_DAYS Tage, als "verspaetet" gekennzeichnet).
+
+Bitcoin (ab 31.10.2026): handelt auch am Wochenende. Am Entscheidungstag zaehlt fuer Bitcoin der juengste
+ABGESCHLOSSENE Tagesschluss (Yahoo BTC-USD, UTC-Tag) vor dem Handelstag – z. B. Sonntag, wenn am Montag gehandelt
+wird. Die Historie bleibt auf NYSE-Handelstagen (SMA-Laengen und Momentum-Fenster wie im Backtest); ersetzt wird nur
+der Bitcoin-Wert der Entscheidungszeile. Bis dieser Tagesschluss vorliegt, ist das Monatssignal vorlaeufig
+(btcFinal = false) und es geht keine ntfy-Meldung raus.
 """
 import numpy as np
 import pandas as pd
@@ -40,6 +46,7 @@ def commit_notify_state():
     if PENDING_STATE:
         U.save_json(NOTIFY_FILE, dict(PENDING_STATE))
 LEV = np.array([ASSETS[a]["leverage"] for a in AL], float)
+BTC_COL = AL.index("BTC")
 
 
 # ==========================================================================
@@ -71,14 +78,71 @@ def prepare(raw):
 # ==========================================================================
 #  Berechnung
 # ==========================================================================
-def compute(P, RET):
+def btc_series(raw):
+    """Bitcoin-Tagesschluesse inkl. Wochenende (Yahoo BTC-USD, Datum = UTC-Tag)."""
+    s = raw[ASSETS["BTC"]["signal"]].dropna()
+    s.index = pd.DatetimeIndex(pd.to_datetime(s.index)).tz_localize(None).normalize()
+    return s[~s.index.duplicated(keep="last")].sort_index()
+
+
+def btc_for_trade(btc, trade, now_utc=None):
+    """Bitcoin-Wert fuer eine Entscheidung mit Handel am NYSE-Tag `trade`: juengster ABGESCHLOSSENER Tagesschluss
+    (UTC-Tag) vor dem Handelstag. Die laufende Tageskerze zaehlt nie. -> (wert, datum, endgueltig) oder None.
+    endgueltig = der Tagesschluss vom Vortag des Handels liegt vor (spaeter kommt fuer diesen Handel nichts Neueres)."""
+    now = pd.Timestamp.now(tz="UTC") if now_utc is None else pd.Timestamp(now_utc)
+    now = now.tz_localize("UTC") if now.tzinfo is None else now.tz_convert("UTC")
+    today_utc = now.normalize().tz_localize(None)
+    target = pd.Timestamp(trade).normalize() - pd.Timedelta(days=1)
+    s = btc[(btc.index < today_utc) & (btc.index <= target)]
+    if s.empty:
+        return None
+    return float(s.iloc[-1]), s.index[-1].date(), bool(s.index[-1] >= target)
+
+
+def btc_override(P, i, btc, now_utc=None):
+    """Kursreihe bis Zeile i, in der nur der Bitcoin-Wert der Zeile i durch den juengsten abgeschlossenen
+    Tagesschluss vor dem Handelstag ersetzt ist. -> (P_i, info) mit info = {date, final, value} oder None."""
     idx = P.index
-    flags = U.month_end_flags(idx)
-    rows = np.where(flags & (idx >= pd.Timestamp(HISTORY_START)))[0]
+    trade = idx[i + 1] if i + 1 < len(idx) else pd.Timestamp(U.next_session_after(idx[i].date()))
+    v = btc_for_trade(btc, trade, now_utc) if btc is not None and pd.notna(P.iat[i, BTC_COL]) else None
+    if v is None:
+        return P.iloc[:i + 1], None
+    val, d, final = v
+    info = dict(date=d, final=final, value=val, trade=pd.Timestamp(trade).date())
+    if d <= idx[i].date():                                     # kein neuerer Tagesschluss als am Entscheidungstag selbst
+        return P.iloc[:i + 1], info
+    Pi = P.iloc[:i + 1].copy()
+    Pi.iat[i, BTC_COL] = val
+    return Pi, info
+
+
+def compute(P, RET, btc=None, now_utc=None, rows=None):
+    """Entscheidungen fuer `rows` (Standard: alle Monatsletzten ab HISTORY_START). Mit `btc` (btc_series) zaehlt fuer
+    Bitcoin je Entscheidung der juengste abgeschlossene Tagesschluss vor dem Handelstag; jede Entscheidung wird dann mit
+    ihrer eigenen Kursreihe gerechnet (nur ihre Bitcoin-Zeile ersetzt, die Historie bleibt unveraendert).
+    -> rows, W (vor Vol-Target), sc, WF (Zielquoten), det, btc_info (je Entscheidung oder None)"""
+    idx = P.index
+    if rows is None:
+        flags = U.month_end_flags(idx)
+        rows = np.where(flags & (idx >= pd.Timestamp(HISTORY_START)))[0]
+    rows = np.asarray(rows, int)
     W, det = MC.decision_weights(P, rows, RANKINGS, SMA_LONG, SMA_SHORT, TILT)
+    info = [None] * len(rows)
+    if btc is not None:
+        for k, i in enumerate(rows):
+            Pi, inf = btc_override(P, i, btc, now_utc)
+            info[k] = inf
+            if inf is None or inf["date"] <= idx[i].date():
+                continue
+            Wi, di = MC.decision_weights(Pi, [i], RANKINGS, SMA_LONG, SMA_SHORT, TILT)
+            W[k] = Wi[0]
+            det["P1"][k] = di["P1"][0]
+            for name in det["per_ranking"]:
+                for f in ("W", "P1", "EL", "MOM"):
+                    det["per_ranking"][name][f][k] = di["per_ranking"][name][f][0]
     sc = MC.vt_scale(RET.values, rows, W, VT_TARGET, VT_WINDOWS)
     WF = W * sc[:, None]
-    return rows, W, sc, WF, det
+    return rows, W, sc, WF, det, info
 
 
 def live_indicators(P, i):
@@ -155,7 +219,8 @@ def build_messages(ctx):
         dl = _delta_lines(c["w"], c["w_prev"])
         head = HEAD[c["signal"]]
         L += [f"🔔 {STRAT_NAME} — MONATSWECHSEL{late}", head,
-              (f"Heute handeln ({U.de(c['today'])}), Signal: Schluss {U.de(c['dec'])}" if c["late"] else f"Handeln am {U.de(c['trade'])} (Signal: Schluss {U.de(c['dec'])})"), ""]
+              (f"Heute handeln ({U.de(c['today'])}), Signal: Schluss {U.de(c['dec'])}" if c["late"] else f"Handeln am {U.de(c['trade'])} (Signal: Schluss {U.de(c['dec'])})"),
+              f"Bitcoin: Tagesschluss {U.de(c['btc_date'])} (UTC, letzter vor dem Handel)" if c.get("btc_date") else None, ""]
         L += ["Neue Zielgewichte:"] + _alloc_lines(c["w"])
         L += ["Änderung ggü. Vormonat:"] + (dl if dl else ["  keine (< 0,5 Pp.)"])
     else:
@@ -163,7 +228,11 @@ def build_messages(ctx):
             L += [f"⏳ Monatssignal (Schluss {U.de(c['pend_dec'])}) AUSSTEHEND — Kursdaten fehlen/veraltet, Retry läuft.",
                   f"Handel regulär am {U.de(c['pend_trade'])}; die ntfy-Meldung kommt, sobald die Daten da sind (ggf. „verspätet“).",
                   "Bis dahin gilt noch:", ""]
-        L += [f"📊 {STRAT_LONG} — Tagesstatus", f"Ziel {'ab' if c['today'] < c['trade'] else 'seit'} {U.de(c['trade'])} (Signal {U.de_short(c['dec'])}):"]
+        if not c.get("btc_final", True) and c["today"] <= c["trade"]:
+            L += [f"⏳ Monatssignal VORLÄUFIG: Bitcoin zählt mit dem Tagesschluss vom {U.de(c['btc_target'])} (UTC, letzter vor dem Handel); "
+                  f"bisher {U.de(c['btc_date'])}. Endgültig ab {U.de(c['btc_target'] + pd.Timedelta(days=1))} früh, ntfy am Handelstag.", ""]
+        L += [f"📊 {STRAT_LONG} — Tagesstatus", f"Ziel {'ab' if c['today'] < c['trade'] else 'seit'} {U.de(c['trade'])} (Signal {U.de_short(c['dec'])}"
+              + (f", Bitcoin {U.de_short(c['btc_date'])}" if c.get("btc_date") else "") + "):"]
         L += _alloc_lines(c["w"])
     vw = "/".join(str(x) for x in VT_WINDOWS)
     L += [f"Vola-Cap {VT_TARGET*100:.0f}% (gehebelt, {vw} T):",
@@ -200,12 +269,16 @@ def run_strategy(raw=None, write_files=True):
             mark_error(e)
             return ("Error", None, f"{STRAT_NAME}: Daten konnten nicht geladen werden: {e}" + "\n" + U.ERROR_HINT)
     grid, P, RET, stale, warns, fr = prepare(raw)
-    rows, W, sc, WF, det = compute(P, RET)
+    btc = btc_series(raw)
+    rows, W, sc, WF, det, binfo = compute(P, RET, btc=btc)
     idx = P.index
     i_last = len(idx) - 1
     k = len(rows) - 1                                        # juengste Monatsentscheidung
     dec = idx[rows[k]].date()
     trade = U.next_session_after(dec)
+    bk = binfo[k] or {}                                      # Bitcoin-Kurs der juengsten Entscheidung
+    btc_final = bool(bk.get("final", True))
+    btc_target = trade - pd.Timedelta(days=1)                # Tagesschluss, der fuer den Handel am `trade` zaehlt
     w, w_prev = WF[k], (WF[k - 1] if k > 0 else np.zeros(len(AL)))
     nd = [d for d in U.nyse_sessions(trade, trade + pd.Timedelta(days=45)) if (d.month, d.year) != (trade.month, trade.year)]
     next_trade = nd[0] if nd else None
@@ -224,7 +297,7 @@ def run_strategy(raw=None, write_files=True):
             state["lastDecision"] = dec.isoformat(); state["skipped"] = today.isoformat()   # Erststart mitten im Monat
             if write_files:
                 U.save_json(NOTIFY_FILE, state)
-        elif today >= trade and not stale and U.ntfy_allowed(today):   # nur an NYSE-Handelstagen
+        elif today >= trade and not stale and btc_final and U.ntfy_allowed(today):   # nur an NYSE-Handelstagen, Bitcoin-Schluss da
             signal = _change_type(w, w_prev)
             if signal == "HOLD" and not _delta_lines(w, w_prev):
                 signal = "NOCHANGE"
@@ -232,12 +305,14 @@ def run_strategy(raw=None, write_files=True):
             state.update(lastDecision=dec.isoformat(), sentOn=today.isoformat(), signal=signal)
             PENDING_STATE.clear(); PENDING_STATE.update(state)       # wird erst nach erfolgreichem Push gespeichert
 
-    ind = live_indicators(P, i_last)
+    P_live, _ = btc_override(P, i_last, btc)                 # Anzeige „heute“: Bitcoin wie bei einer Entscheidung heute
+    ind = live_indicators(P_live, i_last)
     Rv = RET.values
     vol_pre = MC.port_vols(Rv, rows[k], W[k], VT_WINDOWS)          # Signal-Portfolio vor VT, Stand Entscheidung
     vol_now = MC.port_vols(Rv, i_last, w, VT_WINDOWS)              # gehaltenes Ziel-Portfolio (nach VT), Stand heute
     vol_asset = {a: U.num(float(np.nan_to_num(Rv[i_last - 62:i_last + 1, AL.index(a)]).std() * np.sqrt(252)), 4) for a in AL}
     ctx = dict(signal=signal, late=late, today=today, dec=dec, trade=trade, w=w, w_prev=w_prev, pend_dec=pend_dec, pend_trade=pend_trade, vt=sc[k], next_dec=next_dec,
+               btc_date=bk.get("date"), btc_final=btc_final, btc_target=btc_target,
                vol_pre=vol_pre, vol_now=vol_now,
                next_trade=next_trade, ind=ind, asof=idx[-1].date(), stale=stale, warns=warns,
                no_new_day=(not stale) and idx[-1].date() < U.berlin_yesterday())
@@ -258,6 +333,9 @@ def run_strategy(raw=None, write_files=True):
         "rebalance": "monthly", "rebalanceLabel": "Signal Monatsletzter → Handel 1. Handelstag",
         "asOf": idx[-1].date().isoformat(), "needsRetry": bool(stale), "dataWarnings": warns,
         "decisionDate": dec.isoformat(), "tradeDate": trade.isoformat(),
+        # Schlusskurse der Entscheidung: Nasdaq/UST/Gold am NYSE-Tag decisionDate; Bitcoin am juengsten abgeschlossenen
+        # UTC-Tag vor dem Handel (btcTarget = Vortag des Handels). btcFinal = false -> Signal vorlaeufig, keine ntfy.
+        "btcDate": bk["date"].isoformat() if bk.get("date") else None, "btcTarget": btc_target.isoformat(), "btcFinal": btc_final,
         "nextDecision": next_dec.isoformat() if next_dec else None,
         "nextRebalance": next_trade.isoformat() if next_trade else None,
         "changedToday": bool(signal in ("BUY", "SELL", "SWITCH", "HOLD")), "changeType": signal,
