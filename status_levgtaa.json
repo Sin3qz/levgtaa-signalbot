@@ -2,14 +2,12 @@
   "strategy": "levGTAA (Momentum, monatlich)",
   "name": "levGTAA",
   "key": "levgtaa",
-  "updated": "2026-10-31T07:31:25.109356+01:00",
+  "updated": "2026-10-31T09:01:20.503665+01:00",
   "rebalance": "monthly",
   "rebalanceLabel": "Signal Monatsletzter → Handel 1. Handelstag",
   "asOf": "2026-10-30",
-  "needsRetry": true,
-  "dataWarnings": [
-    "Bitcoin (BTC-USD): letzter Kurs 29.10.2026 (erwartet 30.10.2026)"
-  ],
+  "needsRetry": false,
+  "dataWarnings": [],
   "decisionDate": "2026-10-30",
   "tradeDate": "2026-11-02",
   "nextDecision": "2026-11-30",
@@ -31,23 +29,23 @@
       84
     ],
     "signalPre": [
-      0.3626,
-      0.3446,
-      0.3676
+      0.3334,
+      0.3157,
+      0.3333
     ],
-    "signalPreMean": 0.3583,
+    "signalPreMean": 0.3274,
     "factor": 1.0,
     "decisionDate": "2026-10-30",
     "holdingNow": [
-      0.3626,
-      0.3446,
-      0.3676
+      0.3334,
+      0.3157,
+      0.3333
     ],
-    "holdingNowMean": 0.3583,
+    "holdingNowMean": 0.3274,
     "asOf": "2026-10-30",
     "assetVol63": {
       "NASDAQ100": 0.5592,
-      "BTC": 0.376,
+      "BTC": 0.3765,
       "UST_IEF": 0.1731,
       "GOLD": 0.734
     }
@@ -56,7 +54,7 @@
     {
       "asset": "NASDAQ100",
       "display": "Nasdaq 100",
-      "weight": 0.55,
+      "weight": 0.45,
       "leverage": 3,
       "product": "WisdomTree NASDAQ 100 3x Daily Leveraged",
       "isin": "IE00BLRPRL42"
@@ -64,7 +62,7 @@
     {
       "asset": "BTC",
       "display": "Bitcoin",
-      "weight": 0.2,
+      "weight": 0.3,
       "leverage": 1,
       "product": "iShares Bitcoin ETP",
       "isin": "XS2940466316"
@@ -78,16 +76,16 @@
       "momA": 0.013043,
       "momB": 0.032479,
       "trend": 0.059711,
-      "target": 0.55
+      "target": 0.45
     },
     "BTC": {
       "display": "Bitcoin",
       "leverage": 1,
-      "momentum": -0.00447,
-      "momA": 0.015364,
-      "momB": -0.024305,
-      "trend": 0.132162,
-      "target": 0.2
+      "momentum": -0.011855,
+      "momA": 0.007833,
+      "momB": -0.031542,
+      "trend": 0.131951,
+      "target": 0.3
     },
     "UST_IEF": {
       "display": "US-Treasury 7-10y",
@@ -123,14 +121,14 @@
         0.022761,
         0.059711,
         0.5592,
-        0.55
+        0.45
       ],
       [
         "1x Bitcoin",
-        -0.00447,
-        0.132162,
-        0.376,
-        0.2
+        -0.011855,
+        0.131951,
+        0.3765,
+        0.3
       ],
       [
         "3x UST",
@@ -757,7 +755,7 @@
       {
         "date": "2026-10-30",
         "lead": "NASDAQ100",
-        "allocation": "BTC:0.2|NASDAQ100:0.55"
+        "allocation": "BTC:0.3|NASDAQ100:0.45"
       }
     ]
   },
@@ -771,10 +769,6 @@
       "fresh": true
     },
     "BTC-USD": {
-      "last": "2026-10-29",
-      "fresh": false
-    },
-    "TLT": {
       "last": "2026-10-30",
       "fresh": true
     },
@@ -782,11 +776,15 @@
       "last": "2026-10-30",
       "fresh": true
     },
-    "GLD": {
+    "TLT": {
       "last": "2026-10-30",
       "fresh": true
     },
     "GC=F": {
+      "last": "2026-10-30",
+      "fresh": true
+    },
+    "GLD": {
       "last": "2026-10-30",
       "fresh": true
     }
