@@ -2,7 +2,7 @@
   "strategy": "levGTAA (Momentum, monatlich)",
   "name": "levGTAA",
   "key": "levgtaa",
-  "updated": "2026-11-07T00:32:46.742615+01:00",
+  "updated": "2026-11-08T12:57:52.401242+01:00",
   "rebalance": "monthly",
   "rebalanceLabel": "Signal Monatsletzter → Handel 1. Handelstag",
   "asOf": "2026-11-06",
@@ -40,16 +40,16 @@
     "factor": 1.0,
     "decisionDate": "2026-10-30",
     "holdingNow": [
-      0.4678,
+      0.4677,
       0.4068,
       0.4162
     ],
-    "holdingNowMean": 0.4303,
+    "holdingNowMean": 0.4302,
     "asOf": "2026-11-06",
     "assetVol63": {
       "NASDAQ100": 0.6544,
       "BTC": 0.3993,
-      "UST_IEF": 0.1722,
+      "UST_IEF": 0.1734,
       "GOLD": 0.7184
     }
   },
@@ -84,28 +84,28 @@
     "BTC": {
       "display": "Bitcoin",
       "leverage": 1,
-      "momentum": -0.005932,
-      "momA": 0.033982,
-      "momB": -0.045845,
-      "trend": 0.113822,
+      "momentum": -0.007151,
+      "momA": 0.032713,
+      "momB": -0.047016,
+      "trend": 0.113788,
       "target": 0.2
     },
     "UST_IEF": {
       "display": "US-Treasury 7-10y",
       "leverage": 3,
-      "momentum": -0.014832,
-      "momA": -0.004623,
-      "momB": -0.025042,
-      "trend": -0.039916,
+      "momentum": -0.011394,
+      "momA": -0.001673,
+      "momB": -0.021115,
+      "trend": -0.037022,
       "target": 0.0
     },
     "GOLD": {
       "display": "Gold",
       "leverage": 3,
-      "momentum": -0.083914,
-      "momA": -0.103515,
-      "momB": -0.064313,
-      "trend": -0.068557,
+      "momentum": -0.084947,
+      "momA": -0.104526,
+      "momB": -0.065368,
+      "trend": -0.068586,
       "target": 0.0
     }
   },
@@ -121,16 +121,16 @@
     "rows": [
       [
         "1x Bitcoin",
-        -0.005932,
-        0.113822,
+        -0.007151,
+        0.113788,
         0.3993,
         0.2
       ],
       [
         "3x UST",
-        -0.014832,
-        -0.039916,
-        0.1722,
+        -0.011394,
+        -0.037022,
+        0.1734,
         0.0
       ],
       [
@@ -142,8 +142,8 @@
       ],
       [
         "3x Gold",
-        -0.083914,
-        -0.068557,
+        -0.084947,
+        -0.068586,
         0.7184,
         0.0
       ]
@@ -772,14 +772,14 @@
       "fresh": true
     },
     "BTC-USD": {
+      "last": "2026-11-07",
+      "fresh": true
+    },
+    "IEF": {
       "last": "2026-11-06",
       "fresh": true
     },
     "TLT": {
-      "last": "2026-11-06",
-      "fresh": true
-    },
-    "IEF": {
       "last": "2026-11-06",
       "fresh": true
     },
