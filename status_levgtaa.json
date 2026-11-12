@@ -2,12 +2,19 @@
   "strategy": "levGTAA (Momentum, monatlich)",
   "name": "levGTAA",
   "key": "levgtaa",
-  "updated": "2026-11-11T00:45:20.030378+01:00",
+  "updated": "2026-11-12T03:02:44.875214+01:00",
   "rebalance": "monthly",
   "rebalanceLabel": "Signal Monatsletzter → Handel 1. Handelstag",
   "asOf": "2026-11-10",
-  "needsRetry": false,
-  "dataWarnings": [],
+  "needsRetry": true,
+  "dataWarnings": [
+    "Bitcoin (BTC-USD): letzter Kurs 10.11.2026 (erwartet 11.11.2026)",
+    "Gold (GC=F): letzter Kurs 10.11.2026 (erwartet 11.11.2026)",
+    "Gold (GLD): letzter Kurs 10.11.2026 (erwartet 11.11.2026)",
+    "Nasdaq (QQQ): letzter Kurs 10.11.2026 (erwartet 11.11.2026)",
+    "UST (IEF): letzter Kurs 10.11.2026 (erwartet 11.11.2026)",
+    "UST (TLT): letzter Kurs 10.11.2026 (erwartet 11.11.2026)"
+  ],
   "decisionDate": "2026-10-30",
   "tradeDate": "2026-11-02",
   "btcDate": "2026-11-01",
@@ -76,7 +83,7 @@
       "display": "Nasdaq 100",
       "leverage": 3,
       "momentum": -0.014006,
-      "momA": -0.026053,
+      "momA": -0.026054,
       "momB": -0.001958,
       "trend": 0.033536,
       "target": 0.55
@@ -84,10 +91,10 @@
     "BTC": {
       "display": "Bitcoin",
       "leverage": 1,
-      "momentum": -0.027898,
-      "momA": 0.013296,
-      "momB": -0.069092,
-      "trend": 0.105906,
+      "momentum": -0.028179,
+      "momA": 0.013003,
+      "momB": -0.069361,
+      "trend": 0.105898,
       "target": 0.2
     },
     "UST_IEF": {
@@ -102,10 +109,10 @@
     "GOLD": {
       "display": "Gold",
       "leverage": 3,
-      "momentum": -0.09512,
-      "momA": -0.115774,
-      "momB": -0.074466,
-      "trend": -0.068256,
+      "momentum": -0.098208,
+      "momA": -0.118791,
+      "momB": -0.077625,
+      "trend": -0.068344,
       "target": 0.0
     }
   },
@@ -135,15 +142,15 @@
       ],
       [
         "1x Bitcoin",
-        -0.027898,
-        0.105906,
+        -0.028179,
+        0.105898,
         0.4019,
         0.2
       ],
       [
         "3x Gold",
-        -0.09512,
-        -0.068256,
+        -0.098208,
+        -0.068344,
         0.7412,
         0.0
       ]
@@ -763,33 +770,33 @@
     ]
   },
   "freshness": {
-    "^NDX": {
-      "last": "2026-11-10",
-      "fresh": true
-    },
     "QQQ": {
       "last": "2026-11-10",
+      "fresh": false
+    },
+    "^NDX": {
+      "last": "2026-11-11",
       "fresh": true
     },
     "BTC-USD": {
       "last": "2026-11-10",
-      "fresh": true
-    },
-    "IEF": {
-      "last": "2026-11-10",
-      "fresh": true
+      "fresh": false
     },
     "TLT": {
       "last": "2026-11-10",
-      "fresh": true
+      "fresh": false
     },
-    "GLD": {
+    "IEF": {
       "last": "2026-11-10",
-      "fresh": true
+      "fresh": false
     },
     "GC=F": {
       "last": "2026-11-10",
-      "fresh": true
+      "fresh": false
+    },
+    "GLD": {
+      "last": "2026-11-10",
+      "fresh": false
     }
   },
   "firstDates": {
