@@ -2,14 +2,12 @@
   "strategy": "levGTAA (Momentum, monatlich)",
   "name": "levGTAA",
   "key": "levgtaa",
-  "updated": "2026-11-12T07:31:44.943878+01:00",
+  "updated": "2026-11-12T09:01:24.409516+01:00",
   "rebalance": "monthly",
   "rebalanceLabel": "Signal Monatsletzter → Handel 1. Handelstag",
   "asOf": "2026-11-11",
-  "needsRetry": true,
-  "dataWarnings": [
-    "Bitcoin (BTC-USD): letzter Kurs 10.11.2026 (erwartet 11.11.2026)"
-  ],
+  "needsRetry": false,
+  "dataWarnings": [],
   "decisionDate": "2026-10-30",
   "tradeDate": "2026-11-02",
   "btcDate": "2026-11-01",
@@ -42,11 +40,11 @@
     "factor": 1.0,
     "decisionDate": "2026-10-30",
     "holdingNow": [
-      0.4958,
-      0.4285,
-      0.4267
+      0.4961,
+      0.4288,
+      0.4268
     ],
-    "holdingNowMean": 0.4503,
+    "holdingNowMean": 0.4506,
     "asOf": "2026-11-11",
     "assetVol63": {
       "NASDAQ100": 0.7001,
@@ -86,10 +84,10 @@
     "BTC": {
       "display": "Bitcoin",
       "leverage": 1,
-      "momentum": -0.025279,
-      "momA": 0.020063,
-      "momB": -0.070621,
-      "trend": 0.101677,
+      "momentum": -0.022048,
+      "momA": 0.023444,
+      "momB": -0.06754,
+      "trend": 0.101767,
       "target": 0.2
     },
     "UST_IEF": {
@@ -137,8 +135,8 @@
       ],
       [
         "1x Bitcoin",
-        -0.025279,
-        0.101677,
+        -0.022048,
+        0.101767,
         0.4019,
         0.2
       ],
@@ -765,17 +763,17 @@
     ]
   },
   "freshness": {
-    "QQQ": {
-      "last": "2026-11-11",
-      "fresh": true
-    },
     "^NDX": {
       "last": "2026-11-11",
       "fresh": true
     },
+    "QQQ": {
+      "last": "2026-11-11",
+      "fresh": true
+    },
     "BTC-USD": {
-      "last": "2026-11-10",
-      "fresh": false
+      "last": "2026-11-11",
+      "fresh": true
     },
     "IEF": {
       "last": "2026-11-11",
