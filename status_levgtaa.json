@@ -2,7 +2,7 @@
   "strategy": "levGTAA (Momentum, monatlich)",
   "name": "levGTAA",
   "key": "levgtaa",
-  "updated": "2026-11-15T13:46:54.928636+01:00",
+  "updated": "2026-11-16T00:11:54.436542+01:00",
   "rebalance": "monthly",
   "rebalanceLabel": "Signal Monatsletzter → Handel 1. Handelstag",
   "asOf": "2026-11-13",
@@ -772,7 +772,7 @@
       "fresh": true
     },
     "BTC-USD": {
-      "last": "2026-11-14",
+      "last": "2026-11-15",
       "fresh": true
     },
     "TLT": {
@@ -783,11 +783,11 @@
       "last": "2026-11-13",
       "fresh": true
     },
-    "GLD": {
-      "last": "2026-11-13",
+    "GC=F": {
+      "last": "2026-11-15",
       "fresh": true
     },
-    "GC=F": {
+    "GLD": {
       "last": "2026-11-13",
       "fresh": true
     }
