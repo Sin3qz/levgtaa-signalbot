@@ -2,7 +2,7 @@
   "strategy": "levGTAA (Momentum, monatlich)",
   "name": "levGTAA",
   "key": "levgtaa",
-  "updated": "2026-11-14T00:55:27.687411+01:00",
+  "updated": "2026-11-15T13:46:54.928636+01:00",
   "rebalance": "monthly",
   "rebalanceLabel": "Signal Monatsletzter → Handel 1. Handelstag",
   "asOf": "2026-11-13",
@@ -40,7 +40,7 @@
     "factor": 1.0,
     "decisionDate": "2026-10-30",
     "holdingNow": [
-      0.4998,
+      0.4997,
       0.4328,
       0.425
     ],
@@ -48,7 +48,7 @@
     "asOf": "2026-11-13",
     "assetVol63": {
       "NASDAQ100": 0.7034,
-      "BTC": 0.4162,
+      "BTC": 0.416,
       "UST_IEF": 0.1836,
       "GOLD": 0.7518
     }
@@ -84,10 +84,10 @@
     "BTC": {
       "display": "Bitcoin",
       "leverage": 1,
-      "momentum": -0.100465,
-      "momA": -0.064668,
-      "momB": -0.136262,
-      "trend": 0.089378,
+      "momentum": -0.154347,
+      "momA": -0.120694,
+      "momB": -0.188,
+      "trend": 0.087871,
       "target": 0.2
     },
     "UST_IEF": {
@@ -102,10 +102,10 @@
     "GOLD": {
       "display": "Gold",
       "leverage": 3,
-      "momentum": -0.131387,
-      "momA": -0.144045,
-      "momB": -0.11873,
-      "trend": -0.071,
+      "momentum": -0.131678,
+      "momA": -0.144331,
+      "momB": -0.119025,
+      "trend": -0.071009,
       "target": 0.0
     }
   },
@@ -134,18 +134,18 @@
         0.0
       ],
       [
-        "1x Bitcoin",
-        -0.100465,
-        0.089378,
-        0.4162,
-        0.2
-      ],
-      [
         "3x Gold",
-        -0.131387,
-        -0.071,
+        -0.131678,
+        -0.071009,
         0.7518,
         0.0
+      ],
+      [
+        "1x Bitcoin",
+        -0.154347,
+        0.087871,
+        0.416,
+        0.2
       ]
     ],
     "kinds": [
@@ -763,16 +763,16 @@
     ]
   },
   "freshness": {
-    "^NDX": {
-      "last": "2026-11-13",
-      "fresh": true
-    },
     "QQQ": {
       "last": "2026-11-13",
       "fresh": true
     },
-    "BTC-USD": {
+    "^NDX": {
       "last": "2026-11-13",
+      "fresh": true
+    },
+    "BTC-USD": {
+      "last": "2026-11-14",
       "fresh": true
     },
     "TLT": {
