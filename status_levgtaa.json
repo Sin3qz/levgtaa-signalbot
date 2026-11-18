@@ -2,14 +2,12 @@
   "strategy": "levGTAA (Momentum, monatlich)",
   "name": "levGTAA",
   "key": "levgtaa",
-  "updated": "2026-11-18T07:31:58.913227+01:00",
+  "updated": "2026-11-18T09:01:38.875210+01:00",
   "rebalance": "monthly",
   "rebalanceLabel": "Signal Monatsletzter → Handel 1. Handelstag",
   "asOf": "2026-11-17",
-  "needsRetry": true,
-  "dataWarnings": [
-    "Bitcoin (BTC-USD): letzter Kurs 16.11.2026 (erwartet 17.11.2026)"
-  ],
+  "needsRetry": false,
+  "dataWarnings": [],
   "decisionDate": "2026-10-30",
   "tradeDate": "2026-11-02",
   "btcDate": "2026-11-01",
@@ -86,10 +84,10 @@
     "BTC": {
       "display": "Bitcoin",
       "leverage": 1,
-      "momentum": -0.144844,
-      "momA": -0.112486,
-      "momB": -0.177202,
-      "trend": 0.072389,
+      "momentum": -0.144342,
+      "momA": -0.111964,
+      "momB": -0.176719,
+      "trend": 0.072404,
       "target": 0.2
     },
     "UST_IEF": {
@@ -144,8 +142,8 @@
       ],
       [
         "1x Bitcoin",
-        -0.144844,
-        0.072389,
+        -0.144342,
+        0.072404,
         0.4038,
         0.2
       ]
@@ -774,8 +772,8 @@
       "fresh": true
     },
     "BTC-USD": {
-      "last": "2026-11-16",
-      "fresh": false
+      "last": "2026-11-17",
+      "fresh": true
     },
     "TLT": {
       "last": "2026-11-17",
@@ -785,11 +783,11 @@
       "last": "2026-11-17",
       "fresh": true
     },
-    "GC=F": {
+    "GLD": {
       "last": "2026-11-17",
       "fresh": true
     },
-    "GLD": {
+    "GC=F": {
       "last": "2026-11-17",
       "fresh": true
     }
