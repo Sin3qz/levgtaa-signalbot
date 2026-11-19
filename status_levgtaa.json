@@ -2,14 +2,12 @@
   "strategy": "levGTAA (Momentum, monatlich)",
   "name": "levGTAA",
   "key": "levgtaa",
-  "updated": "2026-11-19T07:31:54.512105+01:00",
+  "updated": "2026-11-19T09:01:31.163799+01:00",
   "rebalance": "monthly",
   "rebalanceLabel": "Signal Monatsletzter → Handel 1. Handelstag",
   "asOf": "2026-11-18",
-  "needsRetry": true,
-  "dataWarnings": [
-    "Bitcoin (BTC-USD): letzter Kurs 17.11.2026 (erwartet 18.11.2026)"
-  ],
+  "needsRetry": false,
+  "dataWarnings": [],
   "decisionDate": "2026-10-30",
   "tradeDate": "2026-11-02",
   "btcDate": "2026-11-01",
@@ -42,15 +40,15 @@
     "factor": 1.0,
     "decisionDate": "2026-10-30",
     "holdingNow": [
-      0.4794,
-      0.4423,
-      0.4309
+      0.4788,
+      0.442,
+      0.4307
     ],
-    "holdingNowMean": 0.4509,
+    "holdingNowMean": 0.4505,
     "asOf": "2026-11-18",
     "assetVol63": {
       "NASDAQ100": 0.7143,
-      "BTC": 0.3883,
+      "BTC": 0.3921,
       "UST_IEF": 0.1815,
       "GOLD": 0.7269
     }
@@ -86,10 +84,10 @@
     "BTC": {
       "display": "Bitcoin",
       "leverage": 1,
-      "momentum": -0.160089,
-      "momA": -0.130513,
-      "momB": -0.189664,
-      "trend": 0.064982,
+      "momentum": -0.184766,
+      "momA": -0.15606,
+      "momB": -0.213473,
+      "trend": 0.064273,
       "target": 0.2
     },
     "UST_IEF": {
@@ -136,18 +134,18 @@
         0.0
       ],
       [
-        "1x Bitcoin",
-        -0.160089,
-        0.064982,
-        0.3883,
-        0.2
-      ],
-      [
         "3x Gold",
         -0.161048,
         -0.075189,
         0.7269,
         0.0
+      ],
+      [
+        "1x Bitcoin",
+        -0.184766,
+        0.064273,
+        0.3921,
+        0.2
       ]
     ],
     "kinds": [
@@ -774,8 +772,8 @@
       "fresh": true
     },
     "BTC-USD": {
-      "last": "2026-11-17",
-      "fresh": false
+      "last": "2026-11-18",
+      "fresh": true
     },
     "IEF": {
       "last": "2026-11-18",
