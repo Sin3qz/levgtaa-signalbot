@@ -2,18 +2,13 @@
   "strategy": "levGTAA (Momentum, monatlich)",
   "name": "levGTAA",
   "key": "levgtaa",
-  "updated": "2026-11-19T02:45:42.410296+01:00",
+  "updated": "2026-11-19T07:31:54.512105+01:00",
   "rebalance": "monthly",
   "rebalanceLabel": "Signal Monatsletzter → Handel 1. Handelstag",
-  "asOf": "2026-11-17",
+  "asOf": "2026-11-18",
   "needsRetry": true,
   "dataWarnings": [
-    "Bitcoin (BTC-USD): letzter Kurs 17.11.2026 (erwartet 18.11.2026)",
-    "Gold (GC=F): letzter Kurs 17.11.2026 (erwartet 18.11.2026)",
-    "Gold (GLD): letzter Kurs 17.11.2026 (erwartet 18.11.2026)",
-    "Nasdaq (QQQ): letzter Kurs 17.11.2026 (erwartet 18.11.2026)",
-    "UST (IEF): letzter Kurs 17.11.2026 (erwartet 18.11.2026)",
-    "UST (TLT): letzter Kurs 17.11.2026 (erwartet 18.11.2026)"
+    "Bitcoin (BTC-USD): letzter Kurs 17.11.2026 (erwartet 18.11.2026)"
   ],
   "decisionDate": "2026-10-30",
   "tradeDate": "2026-11-02",
@@ -47,17 +42,17 @@
     "factor": 1.0,
     "decisionDate": "2026-10-30",
     "holdingNow": [
-      0.5057,
-      0.442,
+      0.4794,
+      0.4423,
       0.4309
     ],
-    "holdingNowMean": 0.4595,
-    "asOf": "2026-11-17",
+    "holdingNowMean": 0.4509,
+    "asOf": "2026-11-18",
     "assetVol63": {
-      "NASDAQ100": 0.7145,
-      "BTC": 0.4038,
-      "UST_IEF": 0.1819,
-      "GOLD": 0.7063
+      "NASDAQ100": 0.7143,
+      "BTC": 0.3883,
+      "UST_IEF": 0.1815,
+      "GOLD": 0.7269
     }
   },
   "allocation": [
@@ -82,37 +77,37 @@
     "NASDAQ100": {
       "display": "Nasdaq 100",
       "leverage": 3,
-      "momentum": -0.029275,
-      "momA": -0.036643,
-      "momB": -0.021907,
-      "trend": 0.013687,
+      "momentum": -0.025459,
+      "momA": -0.033306,
+      "momB": -0.017612,
+      "trend": 0.00872,
       "target": 0.55
     },
     "BTC": {
       "display": "Bitcoin",
       "leverage": 1,
-      "momentum": -0.144342,
-      "momA": -0.111964,
-      "momB": -0.176719,
-      "trend": 0.072404,
+      "momentum": -0.160089,
+      "momA": -0.130513,
+      "momB": -0.189664,
+      "trend": 0.064982,
       "target": 0.2
     },
     "UST_IEF": {
       "display": "US-Treasury 7-10y",
       "leverage": 3,
-      "momentum": -0.034113,
-      "momA": -0.030952,
-      "momB": -0.037274,
-      "trend": -0.025982,
+      "momentum": -0.028248,
+      "momA": -0.025747,
+      "momB": -0.030749,
+      "trend": -0.024319,
       "target": 0.0
     },
     "GOLD": {
       "display": "Gold",
       "leverage": 3,
-      "momentum": -0.132369,
-      "momA": -0.148255,
-      "momB": -0.116482,
-      "trend": -0.073454,
+      "momentum": -0.161048,
+      "momA": -0.176088,
+      "momB": -0.146008,
+      "trend": -0.075189,
       "target": 0.0
     }
   },
@@ -128,31 +123,31 @@
     "rows": [
       [
         "3x Nasdaq",
-        -0.029275,
-        0.013687,
-        0.7145,
+        -0.025459,
+        0.00872,
+        0.7143,
         0.55
       ],
       [
         "3x UST",
-        -0.034113,
-        -0.025982,
-        0.1819,
-        0.0
-      ],
-      [
-        "3x Gold",
-        -0.132369,
-        -0.073454,
-        0.7063,
+        -0.028248,
+        -0.024319,
+        0.1815,
         0.0
       ],
       [
         "1x Bitcoin",
-        -0.144342,
-        0.072404,
-        0.4038,
+        -0.160089,
+        0.064982,
+        0.3883,
         0.2
+      ],
+      [
+        "3x Gold",
+        -0.161048,
+        -0.075189,
+        0.7269,
+        0.0
       ]
     ],
     "kinds": [
@@ -770,11 +765,11 @@
     ]
   },
   "freshness": {
-    "QQQ": {
-      "last": "2026-11-17",
-      "fresh": false
-    },
     "^NDX": {
+      "last": "2026-11-18",
+      "fresh": true
+    },
+    "QQQ": {
       "last": "2026-11-18",
       "fresh": true
     },
@@ -783,20 +778,20 @@
       "fresh": false
     },
     "IEF": {
-      "last": "2026-11-17",
-      "fresh": false
+      "last": "2026-11-18",
+      "fresh": true
     },
     "TLT": {
-      "last": "2026-11-17",
-      "fresh": false
-    },
-    "GLD": {
-      "last": "2026-11-17",
-      "fresh": false
+      "last": "2026-11-18",
+      "fresh": true
     },
     "GC=F": {
-      "last": "2026-11-17",
-      "fresh": false
+      "last": "2026-11-18",
+      "fresh": true
+    },
+    "GLD": {
+      "last": "2026-11-18",
+      "fresh": true
     }
   },
   "firstDates": {
