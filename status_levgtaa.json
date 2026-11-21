@@ -2,14 +2,12 @@
   "strategy": "levGTAA (Momentum, monatlich)",
   "name": "levGTAA",
   "key": "levgtaa",
-  "updated": "2026-11-21T07:31:54.480662+01:00",
+  "updated": "2026-11-21T09:01:37.386155+01:00",
   "rebalance": "monthly",
   "rebalanceLabel": "Signal Monatsletzter → Handel 1. Handelstag",
   "asOf": "2026-11-20",
-  "needsRetry": true,
-  "dataWarnings": [
-    "Bitcoin (BTC-USD): letzter Kurs 19.11.2026 (erwartet 20.11.2026)"
-  ],
+  "needsRetry": false,
+  "dataWarnings": [],
   "decisionDate": "2026-10-30",
   "tradeDate": "2026-11-02",
   "btcDate": "2026-11-01",
@@ -42,15 +40,15 @@
     "factor": 1.0,
     "decisionDate": "2026-10-30",
     "holdingNow": [
-      0.5264,
-      0.4801,
-      0.4591
+      0.5366,
+      0.4879,
+      0.4654
     ],
-    "holdingNowMean": 0.4885,
+    "holdingNowMean": 0.4966,
     "asOf": "2026-11-20",
     "assetVol63": {
       "NASDAQ100": 0.7942,
-      "BTC": 0.3625,
+      "BTC": 0.374,
       "UST_IEF": 0.1894,
       "GOLD": 0.7421
     }
@@ -86,10 +84,10 @@
     "BTC": {
       "display": "Bitcoin",
       "leverage": 1,
-      "momentum": -0.20448,
-      "momA": -0.169197,
-      "momB": -0.239762,
-      "trend": 0.048194,
+      "momentum": -0.244355,
+      "momA": -0.210841,
+      "momB": -0.277869,
+      "trend": 0.047033,
       "target": 0.2
     },
     "UST_IEF": {
@@ -136,18 +134,18 @@
         0.55
       ],
       [
-        "1x Bitcoin",
-        -0.20448,
-        0.048194,
-        0.3625,
-        0.2
-      ],
-      [
         "3x Gold",
         -0.219245,
         -0.081191,
         0.7421,
         0.0
+      ],
+      [
+        "1x Bitcoin",
+        -0.244355,
+        0.047033,
+        0.374,
+        0.2
       ]
     ],
     "kinds": [
@@ -774,14 +772,14 @@
       "fresh": true
     },
     "BTC-USD": {
-      "last": "2026-11-19",
-      "fresh": false
-    },
-    "TLT": {
       "last": "2026-11-20",
       "fresh": true
     },
     "IEF": {
+      "last": "2026-11-20",
+      "fresh": true
+    },
+    "TLT": {
       "last": "2026-11-20",
       "fresh": true
     },
