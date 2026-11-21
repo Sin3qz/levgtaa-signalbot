@@ -2,12 +2,18 @@
   "strategy": "levGTAA (Momentum, monatlich)",
   "name": "levGTAA",
   "key": "levgtaa",
-  "updated": "2026-11-20T09:01:30.911876+01:00",
+  "updated": "2026-11-21T02:19:47.356931+01:00",
   "rebalance": "monthly",
   "rebalanceLabel": "Signal Monatsletzter → Handel 1. Handelstag",
   "asOf": "2026-11-19",
-  "needsRetry": false,
-  "dataWarnings": [],
+  "needsRetry": true,
+  "dataWarnings": [
+    "Bitcoin (BTC-USD): letzter Kurs 19.11.2026 (erwartet 20.11.2026)",
+    "Gold (GLD): letzter Kurs 19.11.2026 (erwartet 20.11.2026)",
+    "Nasdaq (QQQ): letzter Kurs 19.11.2026 (erwartet 20.11.2026)",
+    "UST (IEF): letzter Kurs 19.11.2026 (erwartet 20.11.2026)",
+    "UST (TLT): letzter Kurs 19.11.2026 (erwartet 20.11.2026)"
+  ],
   "decisionDate": "2026-10-30",
   "tradeDate": "2026-11-02",
   "btcDate": "2026-11-01",
@@ -763,32 +769,32 @@
     ]
   },
   "freshness": {
-    "^NDX": {
-      "last": "2026-11-19",
-      "fresh": true
-    },
     "QQQ": {
       "last": "2026-11-19",
+      "fresh": false
+    },
+    "^NDX": {
+      "last": "2026-11-20",
       "fresh": true
     },
     "BTC-USD": {
       "last": "2026-11-19",
-      "fresh": true
-    },
-    "TLT": {
-      "last": "2026-11-19",
-      "fresh": true
+      "fresh": false
     },
     "IEF": {
       "last": "2026-11-19",
-      "fresh": true
+      "fresh": false
+    },
+    "TLT": {
+      "last": "2026-11-19",
+      "fresh": false
     },
     "GLD": {
       "last": "2026-11-19",
-      "fresh": true
+      "fresh": false
     },
     "GC=F": {
-      "last": "2026-11-19",
+      "last": "2026-11-20",
       "fresh": true
     }
   },
