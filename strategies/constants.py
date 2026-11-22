@@ -15,11 +15,16 @@
 #            Backtest dazu (studien/STUDIE.md im Dashboard-Repo, 10/2014-10/2026): 5 von 70 Entscheidungen anders,
 #            CAGR -0,2 % p. a. (nicht signifikant); gewaehlt, damit die juengste Information zaehlt.
 #
-#  Regel (je Rangliste a/b und je L = 125..225 in 1er-Schritten):
-#     zulaessig, wenn MoM > 0 UND SMA30 > SMA_L
+#  Regel (je Rangliste a/b und je L = 150..250 in 1er-Schritten):
+#     zulaessig, wenn MoM > 0 UND SMA40 > SMA_L
 #     Platz 1 = 40 %, Platz 2 = 60 %; nur ein Asset zulaessig -> 50 %; Rest Cash
 #     Mittel ueber alle L;  Endgewicht = 1/2 * (a) + 1/2 * (b)
-#     (a) MoM 1/3/6/9 Monate, (b) MoM 3/6/12 Monate (je Mittel der Monatsrenditen)
+#     (a) MoM 1/3/6/12 Monate, (b) MoM 3/6/12 Monate (je Mittel der Monatsrenditen)
+#  Ab der Entscheidung zum 30.11.2026 (vorher: 1/3/6/9 + 3/6/12, SMA30, L 125..225): Plateau-Mitte nach der neutralen
+#     Langzeitpruefung 1987-2026 (studien/STUDIE.md, Nachtrag 22.11.2026; Mittel ueber alle 21 Entscheidungstage):
+#     SMA kurz Plateau 30-50 -> 40, Band-Mitten 175-225 -> 150..250, 1/3/6/12 statt 1/3/6/9 (in allen Teilzeitraeumen
+#     gleich oder besser, 12-Monats-Momentum Standard der Literatur). Sharpe 0,80 statt 0,78, CAGR 26,1 statt 25,3 %,
+#     MaxDD gleich; Unterschied nicht signifikant, Auswahl nach festgelegter Regel (Mitte statt Spitze).
 #  Vol-Target 55 %: Faktor = Mittel ueber 42/63/84 Tage von min(1, 0.55 / Vola des
 #     gehebelten Portfolios); Zielgewicht = Gewicht * Faktor, Rest Cash.
 #
@@ -46,9 +51,9 @@ ASSETS = {
                       product="WisdomTree Gold 3x Daily Leveraged", isin="IE00B8HGT870"),
 }
 
-RANKINGS = {"MoM 1/3/6/9": (1, 3, 6, 9), "MoM 3/6/12": (3, 6, 12)}
-SMA_SHORT = 30
-SMA_LONG = list(range(125, 226))        # 125..225, 1er-Schritte (101 Laengen)
+RANKINGS = {"MoM 1/3/6/12": (1, 3, 6, 12), "MoM 3/6/12": (3, 6, 12)}
+SMA_SHORT = 40
+SMA_LONG = list(range(150, 251))        # 150..250, 1er-Schritte (101 Laengen)
 TILT = (0.40, 0.60)                     # Platz 1, Platz 2
 SLOTFLOOR = 0.50                        # nur ein Asset zulaessig -> max(40 %, 50 %)
 VT_TARGET = 0.55

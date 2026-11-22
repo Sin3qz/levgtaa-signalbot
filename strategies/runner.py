@@ -146,7 +146,7 @@ def compute(P, RET, btc=None, now_utc=None, rows=None):
 
 
 def live_indicators(P, i):
-    """Anzeige-Kennzahlen am Tag i: MoM je Rangliste und Mittel, Trend = Mittel SMA30/SMA_L-1."""
+    """Anzeige-Kennzahlen am Tag i: MoM je Rangliste und Mittel, Trend = Mittel SMA_SHORT/SMA_L-1."""
     out = {}
     for a in AL:
         p = P[a].values[: i + 1]
@@ -242,7 +242,7 @@ def build_messages(ctx):
     order, rows = _sig_rows(c["ind"], c["w"])
     tab = U.table(["Asset", "MoM", "Trend", "Ziel"], rows, "lrrr")
     disc = L + ["", f"Signale (1x-Kurse, Stand {U.de_short(c['asof'])}):", "```"] + tab + ["```",
-                "MoM = Ø der Ranglisten 1/3/6/9 & 3/6/12 M", f"Trend = Ø SMA{SMA_SHORT}/SMA{SMA_LONG[0]}–{SMA_LONG[-1]}"]
+                "MoM = Ø der Ranglisten " + " & ".join("/".join(map(str, m)) for m in RANKINGS.values()) + " M", f"Trend = Ø SMA{SMA_SHORT}/SMA{SMA_LONG[0]}–{SMA_LONG[-1]}"]
     ntfy = L + ["", f"Signale (Stand {U.de_short(c['asof'])}):"] + [
         f"{r[0]}: MoM {r[1]}, Trend {r[2]}, Ziel {r[3]}" for r in rows]
     tail = []
@@ -356,7 +356,7 @@ def run_strategy(raw=None, write_files=True):
                         "momentum": U.num(ind[a]["mom"]), "momA": U.num(ind[a]["mom_a"]), "momB": U.num(ind[a]["mom_b"]),
                         "trend": U.num(ind[a]["trend"]), "target": U.num(w[AL.index(a)], 4)} for a in AL},
         "table": {"head": ["Baustein", "Ø-MoM", "Trend", "Vola", "Ziel"],
-                  "note": (f"Ø-MoM = Mittel der Ranglisten MoM 1/3/6/9 M und 3/6/12 M · Trend = Ø über L={SMA_LONG[0]}–{SMA_LONG[-1]} "
+                  "note": (f"Ø-MoM = Mittel der Ranglisten MoM {' M und '.join('/'.join(map(str, m)) for m in RANKINGS.values())} M · Trend = Ø über L={SMA_LONG[0]}–{SMA_LONG[-1]} "
                            f"von SMA{SMA_SHORT}/SMA_L − 1 · Vola = 63 Tage, annualisiert, gehebelt · Ziel = Zielquote nach Vol-Target"),
                   "rows": [[f"{ASSETS[a]['leverage']}x {ASSETS[a]['short']}", U.num(ind[a]["mom"]), U.num(ind[a]["trend"]),
                             vol_asset[a], U.num(w[AL.index(a)], 4)] for a in order],

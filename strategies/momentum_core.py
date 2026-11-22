@@ -3,9 +3,9 @@
 levGTAA — Strategie-Kern (reine Funktionen, ohne I/O, testbar).
 
 Exakte Nachbildung der freigegebenen Backtest-Regel (Runde 16, r16m / r14lib):
-  fuer jede Rangliste r in (MoM 1/3/6/9, MoM 3/6/12) und jedes L in 125..225 (1er):
+  fuer jede Rangliste r (constants.RANKINGS, ab 30.11.2026: MoM 1/3/6/12 und 3/6/12) und jedes L (SMA_LONG, 150..250):
       MoM_r   = Mittel der Renditen ueber 21*m Handelstage (m in Rangliste)
-      zulaessig, wenn MoM_r > 0 UND SMA30/SMA_L - 1 > 0 (fehlende Werte = nicht zulaessig)
+      zulaessig, wenn MoM_r > 0 UND SMA_K/SMA_L - 1 > 0 (K = SMA_SHORT, ab 30.11.2026: 40; fehlende Werte = nicht zulaessig)
       Top 2 nach MoM_r (absteigend, bei Gleichstand Spaltenreihenfolge):
           Platz 1 -> 40 %, Platz 2 -> 60 % (jeweils nur, wenn zulaessig)
           genau ein Asset zulaessig -> max(40 %, 50 %) = 50 %  (Slotfloor)
