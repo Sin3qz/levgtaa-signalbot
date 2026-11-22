@@ -27,7 +27,7 @@
 #  Backtest-Raenge innerhalb der Plateaus sagen ausserhalb der Stichprobe nichts voraus (Auswahl auf zwei Dritteln landet
 #  im dritten im Schnitt unter dem Median). Gewaehlt werden deshalb Standardwerte: 12-Monats-Momentum (1/3/6/12 + 3/6/12)
 #  und SMA50 gegen ein Band um die 200-Tage-Linie (150-250). Plausibilitaet: in allen drei Zeitdritteln ueber dem Median
-#  (Perzentil 61/78/56), MaxDD -53,9 % statt -55,4 %; keine Klippe in der Naehe. Nicht signifikant (P 0,67).
+#  (Perzentil 61/78/56), MaxDD -53,5 % statt -55,4 %; keine Klippe in der Naehe. Nicht signifikant (P 0,67).
 #  Vol-Target 55 %: Faktor = Mittel ueber 42/63/84 Tage von min(1, 0.55 / Vola des
 #     gehebelten Portfolios); Zielgewicht = Gewicht * Faktor, Rest Cash.
 #
