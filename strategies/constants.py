@@ -15,7 +15,7 @@
 #            Backtest dazu (studien/STUDIE.md im Dashboard-Repo, 10/2014-10/2026): 5 von 70 Entscheidungen anders,
 #            CAGR -0,2 % p. a. (nicht signifikant); gewaehlt, damit die juengste Information zaehlt.
 #
-#  Regel (je Rangliste a/b und je L = 150..250 in 1er-Schritten):
+#  Regel (je Rangliste a/b und je L = 125..225 in 1er-Schritten):
 #     zulaessig, wenn MoM > 0 UND SMA50 > SMA_L
 #     Platz 1 = 40 %, Platz 2 = 60 %; nur ein Asset zulaessig -> 50 %; Rest Cash
 #     Mittel ueber alle L;  Endgewicht = 1/2 * (a) + 1/2 * (b)
@@ -23,10 +23,11 @@
 #  Gilt fuer Entscheidungen ab PARAM_SWITCH (23.11.2026, also ab der Monatsentscheidung zum 30.11.2026); fruehere
 #  Entscheidungen (auch die gehaltene vom 30.10.2026) rechnen mit OLD_PARAMS (1/3/6/9 + 3/6/12, SMA30, L 125..225),
 #  damit die Umstellung keine Umschichtung mitten im Monat ausloest.
-#  Begruendung (studien/STUDIE.md im Dashboard-Repo, Nachtrag 22.11.2026; Mittel ueber alle 21 Entscheidungstage,
-#  1987-2026): guter Bereich SMA kurz 35-70 bei Band-Mitte 175-225 (Sharpe 0,79-0,80, MaxDD -53..-56 %; ab 80 tieferer
-#  MaxDD) -> Mitte SMA50, L 150..250; 1/3/6/12 statt 1/3/6/9 in allen Teilzeitraeumen gleich oder besser.
-#  Sharpe 0,80 statt 0,78, CAGR 26,3 statt 25,3 %, MaxDD -53,5 statt -55,4 % (nicht signifikant; Plateau-Mitte).
+#  Begruendung (studien/STUDIE.md im Dashboard-Repo, Nachtrag 22.11.2026; Mittel ueber alle 21 Entscheidungstage):
+#  geaendert wird nur, was in BEIDEN Zeithaelften (1987-2007, 2007-2026) besser ist: 1/3/6/12 + 3/6/12 mit SMA50
+#  gegen 1/3/6/9 + 3/6/12 mit SMA30 hat in beiden Haelften hoehere Sharpe und kleineren MaxDD (Umgebung SMA45-55 vs.
+#  25-35: MaxDD in 100 % der Paare besser). Das Band 150-250 waere nur 2007-2026 besser, 1987-2007 schlechter -> L
+#  bleibt 125-225. Nicht signifikant (Bootstrap P 0,67); 1/3/6/12 ist zudem der Literaturstandard (12-Monats-Momentum).
 #  Vol-Target 55 %: Faktor = Mittel ueber 42/63/84 Tage von min(1, 0.55 / Vola des
 #     gehebelten Portfolios); Zielgewicht = Gewicht * Faktor, Rest Cash.
 #
@@ -55,7 +56,7 @@ ASSETS = {
 
 RANKINGS = {"MoM 1/3/6/12": (1, 3, 6, 12), "MoM 3/6/12": (3, 6, 12)}
 SMA_SHORT = 50
-SMA_LONG = list(range(150, 251))        # 150..250, 1er-Schritte (101 Laengen)
+SMA_LONG = list(range(125, 226))        # 125..225, 1er-Schritte (101 Laengen), unveraendert
 PARAM_SWITCH = "2026-11-23"             # Entscheidungen ab diesem Tag mit den Parametern oben, davor mit OLD_PARAMS
 OLD_PARAMS = ({"MoM 1/3/6/9": (1, 3, 6, 9), "MoM 3/6/12": (3, 6, 12)}, list(range(125, 226)), 30)   # (Ranglisten, SMA_LONG, SMA_SHORT)
 TILT = (0.40, 0.60)                     # Platz 1, Platz 2

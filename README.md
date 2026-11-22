@@ -19,8 +19,8 @@ z31 3,30 vs 3,28, Bootstrap P 0,33); TLT ist das freigegebene Signal, auf dem al
 
 - **Zeitplan:** Signal = Schlusskurse des **letzten Handelstags** des Monats, Handel am **1. Handelstag** des Folgemonats (NYSE-Kalender).
 - **Zwei Ranglisten:** (a) MoM 1/3/6/12 Monate, (b) MoM 3/6/12 Monate (je Mittel der Monatsrenditen, 1 Monat = 21 Handelstage).
-- **Je Rangliste und je L = 150, 151, …, 250:** zulässig, wenn MoM > 0 **und** SMA50 > SMA_L.
-  (Für Entscheidungen ab 23.11.2026, also ab der Monatsentscheidung zum 30.11.2026; frühere Entscheidungen mit 1/3/6/9 + 3/6/12, SMA30, L = 125–225, damit die Umstellung keine Umschichtung mitten im Monat auslöst. Begründung: neutrale Langzeitprüfung 1987–2026, `studien/STUDIE.md` im Dashboard-Repo.)
+- **Je Rangliste und je L = 125, 126, …, 225:** zulässig, wenn MoM > 0 **und** SMA50 > SMA_L.
+  (Für Entscheidungen ab 23.11.2026, also ab der Monatsentscheidung zum 30.11.2026; frühere Entscheidungen mit 1/3/6/9 + 3/6/12 und SMA30 (L = 125–225 bleibt), damit die Umstellung keine Umschichtung mitten im Monat auslöst. Begründung: Langzeitprüfung 1987–2026; geändert wird nur, was in beiden Zeithälften 1987–2007 und 2007–2026 bei Sharpe und MaxDD besser ist, `studien/STUDIE.md` im Dashboard-Repo.)
   Platz 1 = 40 %, Platz 2 = 60 %; ist nur ein Asset zulässig → 50 %; Rest Cash. Mittel über alle 101 Längen.
 - **Endgewicht** = ½ · (a) + ½ · (b).
 - **Vol-Target 55 %:** Faktor = Mittel über die Fenster 42/63/84 Tage von min(1; 0,55 / Vola des gehebelten Portfolios).
