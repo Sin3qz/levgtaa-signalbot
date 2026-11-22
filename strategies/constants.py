@@ -16,15 +16,17 @@
 #            CAGR -0,2 % p. a. (nicht signifikant); gewaehlt, damit die juengste Information zaehlt.
 #
 #  Regel (je Rangliste a/b und je L = 150..250 in 1er-Schritten):
-#     zulaessig, wenn MoM > 0 UND SMA40 > SMA_L
+#     zulaessig, wenn MoM > 0 UND SMA50 > SMA_L
 #     Platz 1 = 40 %, Platz 2 = 60 %; nur ein Asset zulaessig -> 50 %; Rest Cash
 #     Mittel ueber alle L;  Endgewicht = 1/2 * (a) + 1/2 * (b)
 #     (a) MoM 1/3/6/12 Monate, (b) MoM 3/6/12 Monate (je Mittel der Monatsrenditen)
-#  Ab der Entscheidung zum 30.11.2026 (vorher: 1/3/6/9 + 3/6/12, SMA30, L 125..225): Plateau-Mitte nach der neutralen
-#     Langzeitpruefung 1987-2026 (studien/STUDIE.md, Nachtrag 22.11.2026; Mittel ueber alle 21 Entscheidungstage):
-#     SMA kurz Plateau 30-50 -> 40, Band-Mitten 175-225 -> 150..250, 1/3/6/12 statt 1/3/6/9 (in allen Teilzeitraeumen
-#     gleich oder besser, 12-Monats-Momentum Standard der Literatur). Sharpe 0,80 statt 0,78, CAGR 26,1 statt 25,3 %,
-#     MaxDD gleich; Unterschied nicht signifikant, Auswahl nach festgelegter Regel (Mitte statt Spitze).
+#  Gilt fuer Entscheidungen ab PARAM_SWITCH (23.11.2026, also ab der Monatsentscheidung zum 30.11.2026); fruehere
+#  Entscheidungen (auch die gehaltene vom 30.10.2026) rechnen mit OLD_PARAMS (1/3/6/9 + 3/6/12, SMA30, L 125..225),
+#  damit die Umstellung keine Umschichtung mitten im Monat ausloest.
+#  Begruendung (studien/STUDIE.md im Dashboard-Repo, Nachtrag 22.11.2026; Mittel ueber alle 21 Entscheidungstage,
+#  1987-2026): guter Bereich SMA kurz 35-70 bei Band-Mitte 175-225 (Sharpe 0,79-0,80, MaxDD -53..-56 %; ab 80 tieferer
+#  MaxDD) -> Mitte SMA50, L 150..250; 1/3/6/12 statt 1/3/6/9 in allen Teilzeitraeumen gleich oder besser.
+#  Sharpe 0,80 statt 0,78, CAGR 26,3 statt 25,3 %, MaxDD -53,5 statt -55,4 % (nicht signifikant; Plateau-Mitte).
 #  Vol-Target 55 %: Faktor = Mittel ueber 42/63/84 Tage von min(1, 0.55 / Vola des
 #     gehebelten Portfolios); Zielgewicht = Gewicht * Faktor, Rest Cash.
 #
@@ -52,8 +54,10 @@ ASSETS = {
 }
 
 RANKINGS = {"MoM 1/3/6/12": (1, 3, 6, 12), "MoM 3/6/12": (3, 6, 12)}
-SMA_SHORT = 40
+SMA_SHORT = 50
 SMA_LONG = list(range(150, 251))        # 150..250, 1er-Schritte (101 Laengen)
+PARAM_SWITCH = "2026-11-23"             # Entscheidungen ab diesem Tag mit den Parametern oben, davor mit OLD_PARAMS
+OLD_PARAMS = ({"MoM 1/3/6/9": (1, 3, 6, 9), "MoM 3/6/12": (3, 6, 12)}, list(range(125, 226)), 30)   # (Ranglisten, SMA_LONG, SMA_SHORT)
 TILT = (0.40, 0.60)                     # Platz 1, Platz 2
 SLOTFLOOR = 0.50                        # nur ein Asset zulaessig -> max(40 %, 50 %)
 VT_TARGET = 0.55
