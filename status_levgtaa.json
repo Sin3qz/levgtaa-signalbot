@@ -2,7 +2,7 @@
   "strategy": "levGTAA (Momentum, monatlich)",
   "name": "levGTAA",
   "key": "levgtaa",
-  "updated": "2026-11-22T00:36:48.358258+01:00",
+  "updated": "2026-11-23T00:52:50.707120+01:00",
   "rebalance": "monthly",
   "rebalanceLabel": "Signal Monatsletzter → Handel 1. Handelstag",
   "asOf": "2026-11-20",
@@ -84,10 +84,10 @@
     "BTC": {
       "display": "Bitcoin",
       "leverage": 1,
-      "momentum": -0.244355,
-      "momA": -0.210841,
-      "momB": -0.277869,
-      "trend": 0.047033,
+      "momentum": -0.227711,
+      "momA": -0.193459,
+      "momB": -0.261964,
+      "trend": 0.047517,
       "target": 0.2
     },
     "UST_IEF": {
@@ -142,8 +142,8 @@
       ],
       [
         "1x Bitcoin",
-        -0.244355,
-        0.047033,
+        -0.227711,
+        0.047517,
         0.374,
         0.2
       ]
@@ -772,7 +772,7 @@
       "fresh": true
     },
     "BTC-USD": {
-      "last": "2026-11-21",
+      "last": "2026-11-22",
       "fresh": true
     },
     "IEF": {
@@ -783,12 +783,12 @@
       "last": "2026-11-20",
       "fresh": true
     },
-    "GC=F": {
+    "GLD": {
       "last": "2026-11-20",
       "fresh": true
     },
-    "GLD": {
-      "last": "2026-11-20",
+    "GC=F": {
+      "last": "2026-11-22",
       "fresh": true
     }
   },
