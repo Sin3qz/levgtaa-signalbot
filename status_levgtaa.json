@@ -2,14 +2,12 @@
   "strategy": "levGTAA (Momentum, monatlich)",
   "name": "levGTAA",
   "key": "levgtaa",
-  "updated": "2026-11-24T06:07:03.678586+01:00",
+  "updated": "2026-11-24T08:31:42.400645+01:00",
   "rebalance": "monthly",
   "rebalanceLabel": "Signal Monatsletzter → Handel 1. Handelstag",
   "asOf": "2026-11-23",
-  "needsRetry": true,
-  "dataWarnings": [
-    "Bitcoin (BTC-USD): letzter Kurs 22.11.2026 (erwartet 23.11.2026)"
-  ],
+  "needsRetry": false,
+  "dataWarnings": [],
   "decisionDate": "2026-10-30",
   "tradeDate": "2026-11-02",
   "btcDate": "2026-11-01",
@@ -42,15 +40,15 @@
     "factor": 1.0,
     "decisionDate": "2026-10-30",
     "holdingNow": [
-      0.6153,
-      0.5424,
-      0.5075
+      0.6253,
+      0.5497,
+      0.5133
     ],
-    "holdingNowMean": 0.5551,
+    "holdingNowMean": 0.5628,
     "asOf": "2026-11-23",
     "assetVol63": {
       "NASDAQ100": 0.902,
-      "BTC": 0.3741,
+      "BTC": 0.3847,
       "UST_IEF": 0.1865,
       "GOLD": 0.7709
     }
@@ -86,10 +84,10 @@
     "BTC": {
       "display": "Bitcoin",
       "leverage": 1,
-      "momentum": -0.237066,
-      "momA": -0.208326,
-      "momB": -0.265806,
-      "trend": 0.037944,
+      "momentum": -0.205769,
+      "momA": -0.17585,
+      "momB": -0.235688,
+      "trend": 0.03885,
       "target": 0.2
     },
     "UST_IEF": {
@@ -144,9 +142,9 @@
       ],
       [
         "1x Bitcoin",
-        -0.237066,
-        0.037944,
-        0.3741,
+        -0.205769,
+        0.03885,
+        0.3847,
         0.2
       ]
     ],
@@ -765,19 +763,15 @@
     ]
   },
   "freshness": {
-    "^NDX": {
-      "last": "2026-11-23",
-      "fresh": true
-    },
     "QQQ": {
       "last": "2026-11-23",
       "fresh": true
     },
-    "BTC-USD": {
-      "last": "2026-11-22",
-      "fresh": false
+    "^NDX": {
+      "last": "2026-11-23",
+      "fresh": true
     },
-    "TLT": {
+    "BTC-USD": {
       "last": "2026-11-23",
       "fresh": true
     },
@@ -785,11 +779,15 @@
       "last": "2026-11-23",
       "fresh": true
     },
-    "GC=F": {
+    "TLT": {
       "last": "2026-11-23",
       "fresh": true
     },
     "GLD": {
+      "last": "2026-11-23",
+      "fresh": true
+    },
+    "GC=F": {
       "last": "2026-11-23",
       "fresh": true
     }
