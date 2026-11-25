@@ -2,10 +2,10 @@
   "strategy": "levGTAA (Momentum, monatlich)",
   "name": "levGTAA",
   "key": "levgtaa",
-  "updated": "2026-11-25T00:55:17.087148+01:00",
+  "updated": "2026-11-26T00:39:50.002771+01:00",
   "rebalance": "monthly",
   "rebalanceLabel": "Signal Monatsletzter → Handel 1. Handelstag",
-  "asOf": "2026-11-24",
+  "asOf": "2026-11-25",
   "needsRetry": false,
   "dataWarnings": [],
   "decisionDate": "2026-10-30",
@@ -40,17 +40,17 @@
     "factor": 1.0,
     "decisionDate": "2026-10-30",
     "holdingNow": [
-      0.629,
-      0.554,
-      0.5166
+      0.6284,
+      0.5509,
+      0.5137
     ],
-    "holdingNowMean": 0.5665,
-    "asOf": "2026-11-24",
+    "holdingNowMean": 0.5643,
+    "asOf": "2026-11-25",
     "assetVol63": {
-      "NASDAQ100": 0.9087,
-      "BTC": 0.3864,
-      "UST_IEF": 0.1862,
-      "GOLD": 0.7758
+      "NASDAQ100": 0.9044,
+      "BTC": 0.3851,
+      "UST_IEF": 0.1882,
+      "GOLD": 0.7771
     }
   },
   "allocation": [
@@ -75,37 +75,37 @@
     "NASDAQ100": {
       "display": "Nasdaq 100",
       "leverage": 3,
-      "momentum": -0.061744,
-      "momA": -0.074498,
-      "momB": -0.04899,
-      "trend": -0.012738,
+      "momentum": -0.077959,
+      "momA": -0.085148,
+      "momB": -0.070771,
+      "trend": -0.017263,
       "target": 0.55
     },
     "BTC": {
       "display": "Bitcoin",
       "leverage": 1,
-      "momentum": -0.225204,
-      "momA": -0.203986,
-      "momB": -0.246421,
-      "trend": 0.029462,
+      "momentum": -0.22334,
+      "momA": -0.197661,
+      "momB": -0.24902,
+      "trend": 0.02096,
       "target": 0.2
     },
     "UST_IEF": {
       "display": "US-Treasury 7-10y",
       "leverage": 3,
-      "momentum": -0.02449,
-      "momA": -0.022864,
-      "momB": -0.026117,
-      "trend": -0.017778,
+      "momentum": -0.017697,
+      "momA": -0.015416,
+      "momB": -0.019978,
+      "trend": -0.016141,
       "target": 0.0
     },
     "GOLD": {
       "display": "Gold",
       "leverage": 3,
-      "momentum": -0.204161,
-      "momA": -0.219458,
-      "momB": -0.188865,
-      "trend": -0.087171,
+      "momentum": -0.19839,
+      "momA": -0.213354,
+      "momB": -0.183426,
+      "trend": -0.089566,
       "target": 0.0
     }
   },
@@ -121,30 +121,30 @@
     "rows": [
       [
         "3x UST",
-        -0.02449,
-        -0.017778,
-        0.1862,
+        -0.017697,
+        -0.016141,
+        0.1882,
         0.0
       ],
       [
         "3x Nasdaq",
-        -0.061744,
-        -0.012738,
-        0.9087,
+        -0.077959,
+        -0.017263,
+        0.9044,
         0.55
       ],
       [
         "3x Gold",
-        -0.204161,
-        -0.087171,
-        0.7758,
+        -0.19839,
+        -0.089566,
+        0.7771,
         0.0
       ],
       [
         "1x Bitcoin",
-        -0.225204,
-        0.029462,
-        0.3864,
+        -0.22334,
+        0.02096,
+        0.3851,
         0.2
       ]
     ],
@@ -764,31 +764,31 @@
   },
   "freshness": {
     "QQQ": {
-      "last": "2026-11-24",
+      "last": "2026-11-25",
       "fresh": true
     },
     "^NDX": {
-      "last": "2026-11-24",
+      "last": "2026-11-25",
       "fresh": true
     },
     "BTC-USD": {
-      "last": "2026-11-24",
-      "fresh": true
-    },
-    "IEF": {
-      "last": "2026-11-24",
+      "last": "2026-11-25",
       "fresh": true
     },
     "TLT": {
-      "last": "2026-11-24",
+      "last": "2026-11-25",
       "fresh": true
     },
-    "GLD": {
-      "last": "2026-11-24",
+    "IEF": {
+      "last": "2026-11-25",
       "fresh": true
     },
     "GC=F": {
-      "last": "2026-11-24",
+      "last": "2026-11-25",
+      "fresh": true
+    },
+    "GLD": {
+      "last": "2026-11-25",
       "fresh": true
     }
   },
