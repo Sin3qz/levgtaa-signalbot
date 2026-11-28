@@ -27,7 +27,7 @@ from . import common as U
 from . import momentum_core as MC
 from .constants import (STRAT_NAME, STRAT_LONG, STRAT_KEY, ASSETS, RANKINGS, SMA_SHORT, SMA_LONG,
                         TILT, VT_TARGET, VT_WINDOWS, GRID_START, HISTORY_START, TRY_COUNT,
-                        NTFY_LATE_DAYS, INFO_FOOTER, MIN_ROWS)
+                        NTFY_LATE_DAYS, INFO_FOOTER, MIN_ROWS, PARAM_SWITCH, OLD_PARAMS)
 
 STATUS_FILE = f"status_{STRAT_KEY}.json"
 NOTIFY_FILE = f"notify_state_{STRAT_KEY}.json"
@@ -116,6 +116,31 @@ def btc_override(P, i, btc, now_utc=None):
     return Pi, info
 
 
+def params_for(day):
+    """(Ranglisten, SMA_LONG, SMA_SHORT) fuer eine Entscheidung am Tag `day`: ab PARAM_SWITCH die aktuellen, davor OLD_PARAMS."""
+    return (RANKINGS, SMA_LONG, SMA_SHORT) if pd.Timestamp(day) >= pd.Timestamp(PARAM_SWITCH) else OLD_PARAMS
+
+
+def _weights(P, rows):
+    """MC.decision_weights mit den je Entscheidungsdatum gueltigen Parametern. Die Detailwerte je Rangliste stehen nach
+    Position (a, b) unter den aktuellen Namen, damit alle Auswertungen gleich bleiben."""
+    rows = np.asarray(rows, int); new = P.index[rows] >= pd.Timestamp(PARAM_SWITCH); names = list(RANKINGS)
+    W = np.zeros((len(rows), P.shape[1])); det = {"P1": np.zeros((len(rows), P.shape[1])), "per_ranking": {}}
+    for sel, (rk, Ls, K) in ((~new, OLD_PARAMS), (new, (RANKINGS, SMA_LONG, SMA_SHORT))):
+        if not sel.any():
+            continue
+        Wg, dg = MC.decision_weights(P, rows[sel], rk, Ls, K, TILT)
+        W[sel] = Wg; det["P1"][sel] = dg["P1"]
+        for pos, d in enumerate(dg["per_ranking"].values()):
+            tgt = det["per_ranking"].setdefault(names[pos], {})
+            for f, arr in d.items():
+                arr = np.asarray(arr, float)
+                if f not in tgt:
+                    tgt[f] = np.full((len(rows),) + arr.shape[1:], np.nan)
+                tgt[f][sel] = arr
+    return W, det
+
+
 def compute(P, RET, btc=None, now_utc=None, rows=None):
     """Entscheidungen fuer `rows` (Standard: alle Monatsletzten ab HISTORY_START). Mit `btc` (btc_series) zaehlt fuer
     Bitcoin je Entscheidung der juengste abgeschlossene Tagesschluss vor dem Handelstag; jede Entscheidung wird dann mit
@@ -126,7 +151,7 @@ def compute(P, RET, btc=None, now_utc=None, rows=None):
         flags = U.month_end_flags(idx)
         rows = np.where(flags & (idx >= pd.Timestamp(HISTORY_START)))[0]
     rows = np.asarray(rows, int)
-    W, det = MC.decision_weights(P, rows, RANKINGS, SMA_LONG, SMA_SHORT, TILT)
+    W, det = _weights(P, rows)
     info = [None] * len(rows)
     if btc is not None:
         for k, i in enumerate(rows):
@@ -134,7 +159,7 @@ def compute(P, RET, btc=None, now_utc=None, rows=None):
             info[k] = inf
             if inf is None or inf["date"] <= idx[i].date():
                 continue
-            Wi, di = MC.decision_weights(Pi, [i], RANKINGS, SMA_LONG, SMA_SHORT, TILT)
+            Wi, di = _weights(Pi, [i])
             W[k] = Wi[0]
             det["P1"][k] = di["P1"][0]
             for name in det["per_ranking"]:
@@ -146,7 +171,7 @@ def compute(P, RET, btc=None, now_utc=None, rows=None):
 
 
 def live_indicators(P, i):
-    """Anzeige-Kennzahlen am Tag i: MoM je Rangliste und Mittel, Trend = Mittel SMA30/SMA_L-1."""
+    """Anzeige-Kennzahlen am Tag i: MoM je Rangliste und Mittel, Trend = Mittel SMA_SHORT/SMA_L-1."""
     out = {}
     for a in AL:
         p = P[a].values[: i + 1]
@@ -242,7 +267,7 @@ def build_messages(ctx):
     order, rows = _sig_rows(c["ind"], c["w"])
     tab = U.table(["Asset", "MoM", "Trend", "Ziel"], rows, "lrrr")
     disc = L + ["", f"Signale (1x-Kurse, Stand {U.de_short(c['asof'])}):", "```"] + tab + ["```",
-                "MoM = Ø der Ranglisten 1/3/6/9 & 3/6/12 M", f"Trend = Ø SMA{SMA_SHORT}/SMA{SMA_LONG[0]}–{SMA_LONG[-1]}"]
+                "MoM = Ø der Ranglisten " + " & ".join("/".join(map(str, m)) for m in RANKINGS.values()) + " M", f"Trend = Ø SMA{SMA_SHORT}/SMA{SMA_LONG[0]}–{SMA_LONG[-1]}"]
     ntfy = L + ["", f"Signale (Stand {U.de_short(c['asof'])}):"] + [
         f"{r[0]}: MoM {r[1]}, Trend {r[2]}, Ziel {r[3]}" for r in rows]
     tail = []
@@ -356,7 +381,7 @@ def run_strategy(raw=None, write_files=True):
                         "momentum": U.num(ind[a]["mom"]), "momA": U.num(ind[a]["mom_a"]), "momB": U.num(ind[a]["mom_b"]),
                         "trend": U.num(ind[a]["trend"]), "target": U.num(w[AL.index(a)], 4)} for a in AL},
         "table": {"head": ["Baustein", "Ø-MoM", "Trend", "Vola", "Ziel"],
-                  "note": (f"Ø-MoM = Mittel der Ranglisten MoM 1/3/6/9 M und 3/6/12 M · Trend = Ø über L={SMA_LONG[0]}–{SMA_LONG[-1]} "
+                  "note": (f"Ø-MoM = Mittel der Ranglisten MoM {' M und '.join('/'.join(map(str, m)) for m in RANKINGS.values())} M · Trend = Ø über L={SMA_LONG[0]}–{SMA_LONG[-1]} "
                            f"von SMA{SMA_SHORT}/SMA_L − 1 · Vola = 63 Tage, annualisiert, gehebelt · Ziel = Zielquote nach Vol-Target"),
                   "rows": [[f"{ASSETS[a]['leverage']}x {ASSETS[a]['short']}", U.num(ind[a]["mom"]), U.num(ind[a]["trend"]),
                             vol_asset[a], U.num(w[AL.index(a)], 4)] for a in order],

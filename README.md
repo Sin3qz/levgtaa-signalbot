@@ -18,8 +18,9 @@ Backtest-Runde 33 zeigt Signal TLT und Signal IEF bei 3x-IEF-Invest als statisti
 z31 3,30 vs 3,28, Bootstrap P 0,33); TLT ist das freigegebene Signal, auf dem alle Parameter bestimmt wurden.
 
 - **Zeitplan:** Signal = Schlusskurse des **letzten Handelstags** des Monats, Handel am **1. Handelstag** des Folgemonats (NYSE-Kalender).
-- **Zwei Ranglisten:** (a) MoM 1/3/6/9 Monate, (b) MoM 3/6/12 Monate (je Mittel der Monatsrenditen, 1 Monat = 21 Handelstage).
-- **Je Rangliste und je L = 125, 126, …, 225:** zulässig, wenn MoM > 0 **und** SMA30 > SMA_L.
+- **Zwei Ranglisten:** (a) MoM 1/3/6/12 Monate, (b) MoM 3/6/12 Monate (je Mittel der Monatsrenditen, 1 Monat = 21 Handelstage).
+- **Je Rangliste und je L = 125, 126, …, 225:** zulässig, wenn MoM > 0 **und** SMA50 > SMA_L.
+  (Für Entscheidungen ab der Monatsentscheidung zum 30.11.2026; frühere Entscheidungen mit 1/3/6/9 + 3/6/12 und SMA30 (L = 125–225 unverändert), damit die Umstellung keine Umschichtung mitten im Monat auslöst. Begründung: Langzeitprüfung 1987–2026 mit fünf robusten Kennzahlen – SMA50 erfüllt 3 von 5, SMA30 keine; MaxDD −52,9 % statt −55,4 %, Sharpe 0,791 statt 0,783; das Band 150–250 wäre nur bei der Sharpe minimal besser, bei allen Risikokennzahlen schlechter; `studien/STUDIE.md` im Dashboard-Repo)
   Platz 1 = 40 %, Platz 2 = 60 %; ist nur ein Asset zulässig → 50 %; Rest Cash. Mittel über alle 101 Längen.
 - **Endgewicht** = ½ · (a) + ½ · (b).
 - **Vol-Target 55 %:** Faktor = Mittel über die Fenster 42/63/84 Tage von min(1; 0,55 / Vola des gehebelten Portfolios).
