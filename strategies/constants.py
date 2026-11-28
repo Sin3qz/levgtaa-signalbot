@@ -20,7 +20,7 @@
 #     Platz 1 = 40 %, Platz 2 = 60 %; nur ein Asset zulaessig -> 50 %; Rest Cash
 #     Mittel ueber alle L;  Endgewicht = 1/2 * (a) + 1/2 * (b)
 #     (a) MoM 1/3/6/12 Monate, (b) MoM 3/6/12 Monate (je Mittel der Monatsrenditen)
-#  Gilt fuer Entscheidungen ab PARAM_SWITCH (23.11.2026, also ab der Monatsentscheidung zum 30.11.2026); fruehere
+#  Gilt fuer Entscheidungen ab PARAM_SWITCH (30.11.2026 = Monatsentscheidung zum Monatsende); fruehere
 #  Entscheidungen vor dem 30.11.2026 (auch die gehaltene vom 30.10.) rechnen mit OLD_PARAMS (1/3/6/9 + 3/6/12, SMA30, L 125..225),
 #  damit die Umstellung keine Umschichtung mitten im Monat ausloest.
 #  Begruendung (studien/STUDIE.md im Dashboard-Repo, Nachtrag 28.11.2026; Mittel ueber alle 21 Entscheidungstage):
