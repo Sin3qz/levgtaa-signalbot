@@ -20,7 +20,7 @@ z31 3,30 vs 3,28, Bootstrap P 0,33); TLT ist das freigegebene Signal, auf dem al
 - **Zeitplan:** Signal = Schlusskurse des **letzten Handelstags** des Monats, Handel am **1. Handelstag** des Folgemonats (NYSE-Kalender).
 - **Zwei Ranglisten:** (a) MoM 1/3/6/12 Monate, (b) MoM 3/6/12 Monate (je Mittel der Monatsrenditen, 1 Monat = 21 Handelstage).
 - **Je Rangliste und je L = 150, 151, …, 250:** zulässig, wenn MoM > 0 **und** SMA50 > SMA_L.
-  (Für Entscheidungen ab 23.11.2026, also ab der Monatsentscheidung zum 30.11.2026; frühere Entscheidungen mit 1/3/6/9 + 3/6/12, SMA30, L = 125–225, damit die Umstellung keine Umschichtung mitten im Monat auslöst. Begründung: Langzeitprüfung 1987–2026 – Backtest-Ränge innerhalb der Plateaus sagen nichts voraus, deshalb Standardwerte: 12-Monats-Momentum und SMA50 gegen ein Band um die 200-Tage-Linie; in allen drei Zeitdritteln über dem Median, `studien/STUDIE.md` im Dashboard-Repo.)
+  (Für Entscheidungen ab der Monatsentscheidung zum 30.11.2026; frühere Entscheidungen mit 1/3/6/9 + 3/6/12, SMA30, L = 125–225, damit die Umstellung keine Umschichtung mitten im Monat auslöst. Begründung: Langzeitprüfung 1987–2026 – SMA50 ist die Mitte der Schnittmenge aus flacher Sharpe (35–80), bestem Ø MaxDD über die 21 Entscheidungstage (50–60) und bestem schlechtesten Teilzeitraum (40–50); 1/3/6/12 in jeder Rasterzelle vor 1/3/6/9; `studien/STUDIE.md` im Dashboard-Repo.)
   Platz 1 = 40 %, Platz 2 = 60 %; ist nur ein Asset zulässig → 50 %; Rest Cash. Mittel über alle 101 Längen.
 - **Endgewicht** = ½ · (a) + ½ · (b).
 - **Vol-Target 55 %:** Faktor = Mittel über die Fenster 42/63/84 Tage von min(1; 0,55 / Vola des gehebelten Portfolios).
