@@ -15,20 +15,21 @@
 #            Backtest dazu (studien/STUDIE.md im Dashboard-Repo, 10/2014-10/2026): 5 von 70 Entscheidungen anders,
 #            CAGR -0,2 % p. a. (nicht signifikant); gewaehlt, damit die juengste Information zaehlt.
 #
-#  Regel (je Rangliste a/b und je L = 150..250 in 1er-Schritten):
+#  Regel (je Rangliste a/b und je L = 125..225 in 1er-Schritten):
 #     zulaessig, wenn MoM > 0 UND SMA50 > SMA_L
 #     Platz 1 = 40 %, Platz 2 = 60 %; nur ein Asset zulaessig -> 50 %; Rest Cash
 #     Mittel ueber alle L;  Endgewicht = 1/2 * (a) + 1/2 * (b)
 #     (a) MoM 1/3/6/12 Monate, (b) MoM 3/6/12 Monate (je Mittel der Monatsrenditen)
 #  Gilt fuer Entscheidungen ab PARAM_SWITCH (30.11.2026 = Monatsentscheidung zum Monatsende); fruehere
-#  Entscheidungen vor dem 30.11.2026 (auch die gehaltene vom 30.10.) rechnen mit OLD_PARAMS (1/3/6/9 + 3/6/12, SMA30, L 125..225),
+#  Entscheidungen vor dem 30.11.2026 (auch die gehaltene vom 30.10.) rechnen mit OLD_PARAMS (1/3/6/9 + 3/6/12, SMA30; L 125..225 wie neu),
 #  damit die Umstellung keine Umschichtung mitten im Monat ausloest.
 #  Begruendung (studien/STUDIE.md im Dashboard-Repo, Nachtrag 28.11.2026; Mittel ueber alle 21 Entscheidungstage):
-#  Raster SMA kurz 20-140 x Band-Mitte 150-250 x 4 Ranglisten. Drei robuste Kennzahlen beim Band 150-250: Sharpe flach
-#  35-80, Ø MaxDD ueber die 21 Entscheidungstage am besten 50-60, schlechtester Teilzeitraum am besten 40-50 ->
-#  Schnittmenge 45-55, Mitte SMA50; Minimax-Regret ueber 1987-99 / 2000-09 / 2010-26 bestaetigt den Bereich
-#  (kurz 30-55, Band-Mitte 200-225). SMA30 lag am unteren Rand (bei allen drei Kennzahlen etwas schlechter).
-#  1/3/6/12 + 3/6/12 in jeder Rasterzelle vor 1/3/6/9 + 3/6/12. Vol-Target 55 %: Mitte des flachen Bereichs 40-70 %.
+#  Raster SMA kurz 20-140 x Band-Mitte 150-250 x 4 Ranglisten, bewertet mit fuenf robusten Kennzahlen (Sharpe, Ø MaxDD
+#  ueber die 21 Entscheidungstage, MaxDD, schlechtester Teilzeitraum, Minimax-Regret). SMA50 mit Band 125-225 erfuellt
+#  3 von 5, das alte SMA30 keine; gegen 1/3/6/9 + SMA30: Sharpe 0,791 statt 0,783, MaxDD -52,9 statt -55,4 %, Ø MaxDD
+#  -55,5 statt -56,6 %, schlechtester Teilzeitraum 14,1 statt 13,7 %. Band 150-250 nur +0,008 Sharpe, aber bei allen
+#  drei Risikokennzahlen schlechter -> Band bleibt 125-225. 1/3/6/12 + 3/6/12 in jeder Rasterzelle vor 1/3/6/9.
+#  Vol-Target 55 %: Mitte des flachen Bereichs 40-70 %.
 #  Vol-Target 55 %: Faktor = Mittel ueber 42/63/84 Tage von min(1, 0.55 / Vola des
 #     gehebelten Portfolios); Zielgewicht = Gewicht * Faktor, Rest Cash.
 #
@@ -57,7 +58,7 @@ ASSETS = {
 
 RANKINGS = {"MoM 1/3/6/12": (1, 3, 6, 12), "MoM 3/6/12": (3, 6, 12)}
 SMA_SHORT = 50
-SMA_LONG = list(range(150, 251))        # 150..250, 1er-Schritte (101 Laengen), Mitte 200
+SMA_LONG = list(range(125, 226))        # 125..225, 1er-Schritte (101 Laengen), unveraendert
 PARAM_SWITCH = "2026-11-30"             # Entscheidungen ab diesem Tag mit den Parametern oben, davor mit OLD_PARAMS
 OLD_PARAMS = ({"MoM 1/3/6/9": (1, 3, 6, 9), "MoM 3/6/12": (3, 6, 12)}, list(range(125, 226)), 30)   # (Ranglisten, SMA_LONG, SMA_SHORT)
 TILT = (0.40, 0.60)                     # Platz 1, Platz 2
